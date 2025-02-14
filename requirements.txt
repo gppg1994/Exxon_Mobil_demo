@@ -5,3 +5,4 @@ langchain-openai
 streamlit
 snowflake-connector-python
 pandas
+XlsxWriter
