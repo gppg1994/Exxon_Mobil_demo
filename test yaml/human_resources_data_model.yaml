@@ -1,0 +1,45 @@
+description: Semantic model for managing and analyzing human resources data.
+name: Human Resources Data Model
+tables:
+- base_table:
+    database: human resources_db
+    schema: public
+    table: human resources_table_4
+  description: A logical table capturing key human resources data.
+  dimensions:
+  - data_type: TEXT
+    description: The unique ID of the department.
+    expr: dept_id
+    name: department_id
+    unique: true
+  - data_type: TEXT
+    description: Category or type of human resources activity.
+    expr: human resources_cat
+    name: human resources_category
+    sample_values:
+    - Type A
+    - Type B
+    - Type C
+    unique: false
+  filters:
+  - description: Filter for recent human resources data (last 30 days).
+    expr: created_at > CURRENT_DATE - INTERVAL '30 DAYS'
+    name: human resources_recent_data
+  measures:
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total number of records in human resources data.
+    expr: COUNT(*)
+    name: total_records
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total amount related to human resources operations.
+    expr: total_amt
+    name: total_amount
+  name: human resources_data_4
+  time_dimensions:
+  - data_type: TIMESTAMP
+    description: The timestamp of the record creation.
+    expr: created_at
+    name: created_at
+    unique: false

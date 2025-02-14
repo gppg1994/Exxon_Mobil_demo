@@ -1,0 +1,430 @@
+name: yaml1
+tables:
+  - name: GOVERNMENT_CONTRACT_AWARD_INDEX
+    description: "Federal contract awards data with award amount, date, recipient,\
+      \ and primary awarder for each contract award ID and its associated contract\
+      \ solicitation ID.\n\nThe U.S. General Services Administration (GSA) manages\
+      \ SAM.gov (System for Award Management), which is a key database for government\
+      \ procurement, federal contracting, and awards information in the United States.\
+      \ This platform provides comprehensive data on federal contracts and contract\
+      \ awards, serving as a central location where businesses can register to do\
+      \ business with the U.S. government, and where government agencies publish award\
+      \ details and contracting opportunities. \n\nContracts represent listings soliciting\
+      \ bids on goods and services that the Federal US government is seeking from\
+      \ contractors. \nContract Awards represent accepted bids or solicitations from\
+      \ third-party contractors to fulfill a contract. Note that the description of\
+      \ the contract award may differ from that of the original contract if the government\
+      \ reopened the contract or awarded multiple awards from a single original contract\
+      \ solicitation.\n\nProvides a wide format table that describes each contract\
+      \ award (CONTRACT_AWARD_ID) and its associated (CONTRACT_SOLICITATION_ID).\n\
+      \nThe table provides information on the contract award, including the award\
+      \ amount, date, recipient, and primary awarder."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: GOVERNMENT_CONTRACT_AWARD_INDEX
+    dimensions:
+      - name: CONTRACT_AWARD_ID
+        synonyms:
+          - '  '
+        description: Award number provided by the System for Award Management (sam.gov)
+          that is unique to each award for a given contract.
+        expr: CONTRACT_AWARD_ID
+        data_type: TEXT
+        sample_values:
+          - SP0500-04-V-B526
+          - SP0920-02-V-7920
+          - SPE4A721D5004
+      - name: CONTRACT_SOLICITATION_ID
+        synonyms:
+          - '  '
+        description: Unique solicitation number provided by the System for Award Management
+          (sam.gov) for a specific contract.  Joinable to the GOVERNMENT_CONTRACT_INDEX
+          table.
+        expr: CONTRACT_SOLICITATION_ID
+        data_type: TEXT
+        sample_values:
+          - 05NR72825
+          - SPE4A720T2008
+          - SPM4A710Q9274
+      - name: AWARD_NAME
+        synonyms:
+          - '  '
+        description: A short summary of the goods and services in the awarded contract
+        expr: AWARD_NAME
+        data_type: TEXT
+        sample_values:
+          - NOAA's Small Business Innovation Research (SBIR) Phase 1 2014
+          - Various Subsistence Items for use in U.S. Food Aid Programs
+          - 73 -- Schedule 539 - Solutions and More (SAM); Your Source for Recreational,
+            Hospitality, Law Enforcement, Facilities, Industrial and Environmental
+            Services and Products
+      - name: AWARD_DESCRIPTION
+        synonyms:
+          - '  '
+        description: A detailed statement of work and requirements of the services
+          or products in the awarded contract
+        expr: AWARD_DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - ' '
+          - ' FFM 101 Introduction to Grants & Cooperative Agreements for Federal
+            Personnel FFM 102 Monitoring Grants and Cooperative Agreements for Federal
+            Personnel'
+          - ' Stevedoring and Related Terminal Services for the Port of Thessaloniki,
+            Greece.'
+      - name: RECIPIENT
+        synonyms:
+          - '  '
+        description: The name and address of the organization receiving the contract
+        expr: RECIPIENT
+        data_type: TEXT
+        sample_values:
+          - Konecranes Nuclear Equipment & Services,Llc 5300 S Emmer Dr New Berlin
+            Wi  Usa
+          - Wynnson Enterprises, Inc. 12039 Highway 231 431 N Meridianville  Us
+          - Thomas Electronics, Inc Dba Thomas 208 Davis Pkwy Clyde  Us
+      - name: PRIMARY_AWARDER_CONTACT_ID
+        synonyms:
+          - '  '
+        description: Unique identifier for the primary government contact awarding
+          the contract.
+        expr: PRIMARY_AWARDER_CONTACT_ID
+        data_type: TEXT
+        sample_values:
+          - 5efa138b67396151a90580daab1e0b4e
+          - 71f62d4e774333c28d49d830bf2ce209
+          - e9b5019ad574c753d1d109d9919bb26e
+      - name: PRIMARY_AWARDER_CONTACT_NAME
+        synonyms:
+          - '  '
+        description: Name of the primary government contact at the office awarding
+          the contract
+        expr: PRIMARY_AWARDER_CONTACT_NAME
+        data_type: TEXT
+        sample_values:
+          - None
+          - Gregory S Metty
+          - Bradley D. Leavitt
+      - name: PRIMARY_AWARDER_CONTACT_TITLE
+        synonyms:
+          - '  '
+        description: Title of the primary government contact at the office awarding
+          the contract
+        expr: PRIMARY_AWARDER_CONTACT_TITLE
+        data_type: TEXT
+        sample_values:
+          - Contract Specialist
+          - Contracting Officer
+          - Contract Negotiator
+      - name: PRIMARY_AWARDER_CONTACT_EMAIL
+        synonyms:
+          - '  '
+        description: Email of the primary government contact at the office awarding
+          the contract
+        expr: PRIMARY_AWARDER_CONTACT_EMAIL
+        data_type: TEXT
+        sample_values:
+          - None
+          - jmccomas@bop.gov
+          - james.s.altice@uscg.mil
+      - name: PRIMARY_AWARDER_CONTACT_PHONE
+        synonyms:
+          - '  '
+        description: Phone number of the primary government contact at the office
+          awarding the contract
+        expr: PRIMARY_AWARDER_CONTACT_PHONE
+        data_type: TEXT
+        sample_values:
+          - '5188974057'
+          - '2539317080'
+          - '7132294125'
+      - name: PRIMARY_AWARDER_CONTACT_FAX
+        synonyms:
+          - '  '
+        description: Fax number of the primary government contact at the office awarding
+          the contract
+        expr: PRIMARY_AWARDER_CONTACT_FAX
+        data_type: TEXT
+        sample_values:
+          - '3617865061'
+          - '2023052091'
+          - '2523356790'
+    time_dimensions:
+      - name: AWARD_DATE
+        synonyms:
+          - '  '
+        description: The date the contract was awarded
+        expr: AWARD_DATE
+        data_type: DATE
+        sample_values:
+          - '2019-07-31'
+          - '2011-09-29'
+          - '2018-09-20'
+    measures:
+      - name: AWARD_AMOUNT
+        synonyms:
+          - '  '
+        description: The total amount of the awarded contract
+        expr: AWARD_AMOUNT
+        data_type: FLOAT
+        sample_values:
+          - '17325.6'
+          - '50386.0'
+          - '32932.69'
+  - name: GOVERNMENT_CONTRACT_INDEX
+    description: "Index of federal contracts, including contract descriptions, associated\
+      \ agencies, and geographic information on contract performance.\n\nThe U.S.\
+      \ General Services Administration (GSA) manages SAM.gov (System for Award Management),\
+      \ which is a key database for government procurement, federal contracting, and\
+      \ awards information in the United States. This platform provides comprehensive\
+      \ data on federal contracts and contract awards, serving as a central location\
+      \ where businesses can register to do business with the U.S. government, and\
+      \ where government agencies publish award details and contracting opportunities.\
+      \ Contracts represent listings soliciting bids on goods and services that the\
+      \ Federal US government is seeking from contractors. Contract Awards represent\
+      \ accepted bids or solicitations from third-party contractors to fulfill a contract.\
+      \ Note that the description of the contract award may differ from that of the\
+      \ original contract if the government reopened the contract or awarded multiple\
+      \ awards from a single original contract solicitation.\n\nProvides a wide format\
+      \ table that describes each contract (CONTRACT_SOLICITATION_ID). The table details\
+      \ the original contract name, description, associated departments and agencies,\
+      \ and geographic information on the performance of the contract."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: GOVERNMENT_CONTRACT_INDEX
+    dimensions:
+      - name: CONTRACT_SOLICITATION_ID
+        synonyms:
+          - '  '
+        description: Unique solicitation number provided by the System for Award Management
+          (sam.gov) for a specific contract.  Joinable to the GOVERNMENT_CONTRACT_AWARD_INDEX
+          table.
+        expr: CONTRACT_SOLICITATION_ID
+        data_type: TEXT
+        sample_values:
+          - W91YTZ22P0083
+          - SPEFA119Q0113
+          - SP0600-10-R-0241
+      - name: ORIGINAL_CONTRACT_TITLE
+        synonyms:
+          - '  '
+        description: A short summary of the goods and services to be provided to the
+          Federal government in the contract.
+        expr: ORIGINAL_CONTRACT_TITLE
+        data_type: TEXT
+        sample_values:
+          - 59--RESISTOR,THERMAL
+          - Sources Sought Notice to Procure Pasta Products and Enriched Egg Noodles
+          - LEASE OF MICROBIOLOGY ANALYZER, INCLUDES REAGENTS AND OTHER SERVICES
+      - name: ORIGINAL_CONTRACT_DESCRIPTION
+        synonyms:
+          - '  '
+        description: A detailed statement of work and requirements of the services
+          or products to be provided to the Federal government in the contract.
+        expr: ORIGINAL_CONTRACT_DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - 'The FAA is seeking a qualifed contractor to provide Parking Lot and side
+            walk repairs at the TOC in Denver Colordo. This is a competitive Set-Aside
+            for 8(a) Certified Businesses registered and doing business in the State
+            of Colorado. Interested vendors must have the following: * Current 8(a)
+            certification and SAM registration. * Ability to provide bonding insurance
+            for the full amount of this project.  REQUIREMENT -- PAST EXPERIENCE FORM:
+            The attached Past Experience Form requires at least two references for
+            two projects that are similar in scope and completed within the last three
+            years. Only those vendors who submit a past experience form will receive
+            a copy of the full Solicitation.  This project will be awarded as a Firm-Fixed
+            Price Contract. The evaluation of offers will be based on Lowest Priced
+            Techincal Acceptability (LPTA).'
+          - Replace the existing HVAC DDC control systems in Buildings 4943 & 4945
+            with Automated Logic Controls (ALC) and install an ALC network control
+            system using the Automated Logic JBER standard points list on equipment
+            in accordance with the Statement of Work (SOW).  The use of brand name
+            description is essential to this requirement, thereby precluding consideration
+            of a product manufactured by another company. This requirement must meet
+            all the specifications outlined in the SOW.  The contractor shall furnish
+            all labor, materials, and equipment to accomplish all of the work IAW
+            the SOW.
+          - 'Notification of contract award to AB SCIEX in the amount of $506,227.25
+            on 24 September 2019. The requirement is for X500R QTOF and maintenance
+            services contract. Contracting office: U.S. Army Medical Research Acquisition
+            Activity (USAMRAA) 820 Chandler Street Fort Detrick, MD 21702 Contract
+            performance is at the Armed Forces Medical Examiner System (AFMES), Division
+            of Forensic Toxicology (DFT), Dover Air Force Base, DE. No set aside used
+            in this procurement. Award notice for GS-07F-0092X-W81XWH19F0645 to AB
+            SCIEX with redacted Limited Sources Justification attached.  '
+      - name: DEPARTMENT
+        synonyms:
+          - '  '
+        description: The Federal Department seeking services or products (e.g., Dept
+          of Defense)
+        expr: DEPARTMENT
+        data_type: TEXT
+        sample_values:
+          - Dept Of Defense
+          - Interior, Department Of The
+          - None
+      - name: AGENCY
+        synonyms:
+          - '  '
+        description: The agency underneath the department offering the contract (e.g.,
+          Dept of Navy)
+        expr: AGENCY
+        data_type: TEXT
+        sample_values:
+          - National Geospatial-Intelligence Agency (Nga)
+          - National Oceanic And Atmospheric Administration
+          - Dept Of The Army
+      - name: AGENCY_OFFICE
+        synonyms:
+          - '  '
+        description: The specific office within the agency handling the contract (e.g.,
+          Naval Research Laboratory)
+        expr: AGENCY_OFFICE
+        data_type: TEXT
+        sample_values:
+          - Tahoe National Forest
+          - 261-Network Contract Office 21 (36c261)
+          - Navair Warfare Ctr Aircraft Div
+      - name: NAICS_DESCRIPTION
+        synonyms:
+          - '  '
+        description: Human-readable description of the industry related to the contract
+        expr: NAICS_DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - Solid Waste Collection
+          - Other Communications Equipment Manufacturing
+          - Office Furniture (except Wood) Manufacturing
+      - name: SPECIAL_AWARD_PROVISION
+        synonyms:
+          - '  '
+        description: Indication of exclusivity for all or part of a contract to be
+          set aside or reserved for a small or underrepresented business
+        expr: SPECIAL_AWARD_PROVISION
+        data_type: TEXT
+        sample_values:
+          - Historically Underutilized Business (HUBZone) Set-Aside (FAR 19.13)
+          - Service-Disabled Veteran-Owned Small Business (SDVOSB) Set-Aside (FAR
+            19.14)
+          - None
+      - name: PERFORMANCE_CITY
+        synonyms:
+          - '  '
+        description: The city location where the contract will be fulfilled
+        expr: PERFORMANCE_CITY
+        data_type: TEXT
+        sample_values:
+          - Huntsville
+          - Saint Paul Island
+          - Zuni
+      - name: PERFORMANCE_STATE
+        synonyms:
+          - '  '
+        description: The state location where the contract will be fulfilled
+        expr: PERFORMANCE_STATE
+        data_type: TEXT
+        sample_values:
+          - None
+          - Alaska
+          - North Carolina
+      - name: PERFORMANCE_ZIPCODE
+        synonyms:
+          - '  '
+        description: The zipcode location where the contract will be fulfilled
+        expr: PERFORMANCE_ZIPCODE
+        data_type: TEXT
+        sample_values:
+          - '20746'
+          - '87327'
+          - '87571'
+      - name: PERFORMANCE_COUNTRY
+        synonyms:
+          - '  '
+        description: The country location where the contract will be fulfilled
+        expr: PERFORMANCE_COUNTRY
+        data_type: TEXT
+        sample_values:
+          - Netherlands
+          - Germany
+          - None
+      - name: PERFORMANCE_GEO_ID_CITY
+        synonyms:
+          - '  '
+        description: The unique identifier for the contract fulfillment city that
+          is joinable to the GEOGRAPHY_INDEX
+        expr: PERFORMANCE_GEO_ID_CITY
+        data_type: TEXT
+        sample_values:
+          - geoId/2475725
+          - geoId/4159850
+          - geoId/5307695
+      - name: PERFORMANCE_GEO_ID_STATE
+        synonyms:
+          - '  '
+        description: The unique identifier for the contract fulfillment state that
+          is joinable to the GEOGRAPHY_INDEX
+        expr: PERFORMANCE_GEO_ID_STATE
+        data_type: TEXT
+        sample_values:
+          - geoId/29
+          - geoId/38
+          - geoId/48
+      - name: PERFORMANCE_GEO_ID_ZIP
+        synonyms:
+          - '  '
+        description: The unique identifier for the contract fulfillment zipcode that
+          is joinable to the GEOGRAPHY_INDEX
+        expr: PERFORMANCE_GEO_ID_ZIP
+        data_type: TEXT
+        sample_values:
+          - zip/31314
+          - zip/20892
+          - zip/28547
+      - name: PERFORMANCE_GEO_ID_COUNTRY
+        synonyms:
+          - '  '
+        description: The unique identifier for the contract fulfillment country that
+          is joinable to the GEOGRAPHY_INDEX
+        expr: PERFORMANCE_GEO_ID_COUNTRY
+        data_type: TEXT
+        sample_values:
+          - None
+          - country/USA
+          - country/AFG
+    time_dimensions:
+      - name: FIRST_POSTED_DATE
+        synonyms:
+          - '  '
+        description: The earliest date the contract was posted on the System for Award
+          Management (sam.gov)
+        expr: FIRST_POSTED_DATE
+        data_type: TIMESTAMP_TZ
+        sample_values:
+          - '2017-10-18 18:08:38-04:00'
+          - '2010-08-12 11:01:50-04:00'
+          - '2018-08-22 09:42:54-04:00'
+      - name: RESPONSE_DEADLINE
+        synonyms:
+          - '  '
+        description: Deadline for organizations to submit proposals for the contract
+        expr: RESPONSE_DEADLINE
+        data_type: TIMESTAMP_TZ
+        sample_values:
+          - '2011-07-19 09:00:00-06:00'
+          - '2021-08-16 15:30:00-06:00'
+          - '2009-05-13 00:00:00-05:00'
+    measures:
+      - name: NAICS_CODE
+        synonyms:
+          - '  '
+        description: The North American Industry Classification System code that best
+          classifies the goods or services in the contract opportunity
+        expr: NAICS_CODE
+        data_type: NUMBER
+        sample_values:
+          - '336340'
+          - '561730'
+          - '332999'

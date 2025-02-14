@@ -1,0 +1,6 @@
+PyYAML
+langchain-core
+python-dotenv
+langchain-openai
+streamlit
+snowflake-connector-python

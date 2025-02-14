@@ -1,0 +1,228 @@
+name: yaml7
+tables:
+  - name: EUROPEAN_CENTRAL_BANK_ATTRIBUTES
+    description: "Consumer price indices, residential property prices, and valuations\
+      \ for European countries and country groups, provided by the European Central\
+      \ Bank.\n\nThe European Central Bank (ECB) is a central institution of the Eurozone,\
+      \ primarily responsible for managing the euro and framing and implementing EU\
+      \ economic & monetary policy. Our ECB data covers the following: (1) Consumer\
+      \ Price Indices for a wide range of consumer goods, (2) Residential Property\
+      \ Prices, and (3) Residential Property Valuations. Data is provided for European\
+      \ countries as well as the European country groups.\n\nProvides a wide format\
+      \ breakdown of variables included in the european_central_bank_timeseries table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: EUROPEAN_CENTRAL_BANK_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - whole_country_transaction_value_index_residential_property_all_dwelling_types_new_and_existing_central_bank_of_malta_transaction_based_quarterly
+          - whole_country_transaction_value_index_residential_property_all_dwelling_types_new_and_existing_european_central_bank_ecb_transaction_based_quarterly
+          - harmonized_index_of_consumer_prices_hire_of_furniture_and_furnishings_annual_rate_of_change_eurostat_neither_seasonally_nor_working_day_adjusted_percent
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Whole country - Transaction value - Index - Residential property, All
+            dwelling types, new and existing - Central Bank of Malta (Transaction
+            based), Quarterly
+          - Whole country - Transaction value - Index - Residential property, All
+            dwelling types, new and existing - European Central Bank (ECB) (Transaction
+            based), Quarterly
+          - Harmonized Index Of Consumer Prices - Hire Of Furniture And Furnishings,
+            Annual Rate Of Change, Eurostat, Neither Seasonally Nor Working Day Adjusted,
+            Percent
+      - name: ITEM_DESCRIPTION
+        synonyms:
+          - '  '
+        description: The item category referenced as part of the harmonized index
+          of consumer prices.
+        expr: ITEM_DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - None
+          - Hire Of Furniture And Furnishings
+          - Insurance
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Residential property, All dwelling types, new and existing
+          - Harmonized Index Of Consumer Prices
+          - Inflation
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Index, 2015=100
+          - Percent
+          - Points
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Quarterly
+          - Monthly
+          - Annual
+      - name: MEASUREMENT_TYPE
+        synonyms:
+          - '  '
+        description: Details how the variable was measured or calculated; specifications
+          for the type of unit measured (e.g., 3-month moving average (Average of
+          observations through period)).
+        expr: MEASUREMENT_TYPE
+        data_type: TEXT
+        sample_values:
+          - Transaction value (Transaction based) - Non transformed data, Average
+            of observations through period
+          - Annual rate of change (Average of observations through period)
+          - Contribution to growth rate (Average of observations through period)
+      - name: GEO_COVERAGE
+        synonyms:
+          - '  '
+        description: Determines whether the variable relates to part or all of a country
+          (e.g., Whole country, Large cities, National excluding capital city).
+        expr: GEO_COVERAGE
+        data_type: TEXT
+        sample_values:
+          - Whole country
+          - Large cities
+          - National excluding capital city
+      - name: SEASONALLY_ADJUSTED
+        synonyms:
+          - '  '
+        description: Indicates whether the value is seasonally adjusted.
+        expr: SEASONALLY_ADJUSTED
+        data_type: TEXT
+        sample_values:
+          - Not seasonally adjusted
+          - None
+          - Working day and seasonally adjusted
+      - name: SOURCE
+        synonyms:
+          - '  '
+        description: Source where the variable is originally collected or published.
+        expr: SOURCE
+        data_type: TEXT
+        sample_values:
+          - Central Bank of Malta
+          - European Central Bank (ECB)
+          - Eurostat
+  - name: EUROPEAN_CENTRAL_BANK_TIMESERIES
+    description: "Consumer price indices, residential property prices, and valuations\
+      \ for European countries and country groups, provided by the European Central\
+      \ Bank.\n\nThe European Central Bank (ECB) is a central institution of the Eurozone,\
+      \ primarily responsible for managing the euro and framing and implementing EU\
+      \ economic & monetary policy. Our ECB data covers the following: (1) Consumer\
+      \ Price Indices for a wide range of consumer goods, (2) Residential Property\
+      \ Prices, and (3) Residential Property Valuations. Data is provided for European\
+      \ countries as well as the European country groups.\n\nEach row represents a\
+      \ distinct timeseries, date, and value by geographic entity. Each variable is\
+      \ detailed in the european_central_bank_attributes table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: EUROPEAN_CENTRAL_BANK_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place. Joinable to other geography
+          tables including GEOGRAPHY_INDEX, GEOGRAPHY_RELATIONSHIPS, and GEOGRAPHY_CHARACTERISTICS.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - country/AUT
+          - country/ESP
+          - country/LVA
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - whole_country_transaction_value_index_residential_property_all_dwelling_types_new_and_existing_banco_de_espana_spain_transaction_based_quarterly
+          - harmonized_index_of_consumer_prices_preserved_fruit_and_fruitbased_products_monthly_index_eurostat_neither_seasonally_nor_working_day_adjusted_index_2015=100
+          - harmonized_index_of_consumer_prices_equipment_for_sport_monthly_index_eurostat_neither_seasonally_nor_working_day_adjusted_index_2015=100
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Whole country - Transaction value - Index - Residential property, All
+            dwelling types, new and existing - European Central Bank (ECB) (Transaction
+            based), Quarterly
+          - Whole country - Transaction value - Index - Residential property, All
+            dwelling types, new and existing - Banco de Espana (Spain) (Transaction
+            based), Quarterly
+          - Harmonized Index Of Consumer Prices - Other Meats, Annual Rate Of Change,
+            Eurostat, Neither Seasonally Nor Working Day Adjusted, Percent
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Index, 2015=100
+          - Percent
+      - name: VALUE_COMMENT
+        synonyms:
+          - '  '
+        description: Comment on the source, measurement, or definition of the value.
+        expr: VALUE_COMMENT
+        data_type: TEXT
+        sample_values:
+          - 'Banco De Espana, Bol.Estadistico, T 25.7 Col 8 (Quarterly Only) And Banco
+            De Espana Website (Www.Bde.Es), Summary Indicators. Original Source: Ministerio
+            De La Vivienda.'
+          - Estimated value
+          - Introduction of harmonised treatment of price reductions in Luxembourg
+            as of Jan99
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '1976-06-30'
+          - '1977-03-31'
+          - '2013-03-31'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: FLOAT
+        sample_values:
+          - '46.280790881674946'
+          - '4.681274777506709'
+          - '139.82511790275748'

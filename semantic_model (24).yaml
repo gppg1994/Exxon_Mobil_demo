@@ -1,0 +1,270 @@
+name: iyfgfyu
+tables:
+  - name: INTERNATIONAL_LABOUR_ORGANIZATION_ATTRIBUTES
+    description: "Global labor market data on employment, unemployment, labor force\
+      \ participation, and other measures broken down by demographic and economic\
+      \ characteristics, provided by the International Labour Organization (ILO).\n\
+      \nThe International Labour Organization (ILO), a specialized international agency\
+      \ of the United Nations focused on human and labor rights, offers data on various\
+      \ aspects of the labor market, including employment, unemployment, labor force\
+      \ participation, and other measures of labor market status and trends. The model\
+      \ estimates they provide cover parameters such as sex, age, settlement classification,\
+      \ employment status, occupation, economic activity, and economic class. \n\n\
+      Provides a wide format breakdown of variables included in the international_labour_organization_timeseries\
+      \ table. The ILO Series ID is provided for reference."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: INTERNATIONAL_LABOUR_ORGANIZATION_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - UNE_2EAP_SEX_AGE_RT,A_SEX_F_AGE_YTHADULT_Y15-24_ML
+          - UNE_2EAP_SEX_AGE_RT,A_SEX_F_AGE_YTHADULT_Y15-24_MU
+          - UNE_2EAP_SEX_AGE_RT,A_SEX_F_AGE_YTHADULT_YGE15_ML
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Unemployment rate by sex and age -- ILO modelled estimates | Female |
+            Age (Youth, adults): 15-24, Annual (Percent), Margin of Error: Lower Bound'
+          - 'Unemployment rate by sex and age -- ILO modelled estimates | Female |
+            Age (Youth, adults): 15-24, Annual (Percent), Margin of Error: Upper Bound'
+          - 'Unemployment rate by sex and age -- ILO modelled estimates | Female |
+            Age (Youth, adults): 15+, Annual (Percent), Margin of Error: Lower Bound'
+      - name: SERIES_ID
+        synonyms:
+          - '  '
+        description: Unique ILO identifier for the subject and frequency of the ILO
+          variable.
+        expr: SERIES_ID
+        data_type: TEXT
+        sample_values:
+          - UNE_2EAP_SEX_AGE_RT,A
+          - UNE_2UNE_SEX_AGE_NB,A
+          - EAP_TEAP_SEX_AGE_GEO_NB,M
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Unemployment rate by sex and age
+          - Unemployment by sex and age
+          - Labour force by sex, age and rural / urban areas
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Percent
+          - Count
+          - International $ at PPP
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Annual
+          - Monthly
+          - Quarterly
+      - name: SEX
+        synonyms:
+          - '  '
+        description: Sex (e.g., Female), if applicable.
+        expr: SEX
+        data_type: TEXT
+        sample_values:
+          - Female
+          - Male
+          - Total
+      - name: AGE_GROUP
+        synonyms:
+          - '  '
+        description: A range of ages, if applicable.
+        expr: AGE_GROUP
+        data_type: TEXT
+        sample_values:
+          - 'Age (Youth, adults): 15-24'
+          - 'Age (Youth, adults): 15+'
+          - 'Age (Youth, adults): 25+'
+      - name: GEOGRAPHY_TYPE
+        synonyms:
+          - '  '
+        description: A settlement or land use classification (e.g., Rural, Urban),
+          if applicable.
+        expr: GEOGRAPHY_TYPE
+        data_type: TEXT
+        sample_values:
+          - None
+          - Not elsewhere classified
+          - Rural
+      - name: EMPLOYMENT_STATUS
+        synonyms:
+          - '  '
+        description: A classification of the status of individuals based on their
+          role in the workforce, if applicable.
+        expr: EMPLOYMENT_STATUS
+        data_type: TEXT
+        sample_values:
+          - None
+          - 'Status in employment (ICSE-93): 1. Employees'
+          - 'Status in employment (ICSE-93): 2. Employers'
+      - name: OCCUPATION
+        synonyms:
+          - '  '
+        description: A person's regular, main work or profession, if applicable.
+        expr: OCCUPATION
+        data_type: TEXT
+        sample_values:
+          - None
+          - Craft and related trades workers
+          - Plant and machine operators, and assemblers
+      - name: ECONOMIC_ACTIVITY
+        synonyms:
+          - '  '
+        description: An industry classification based on type of production and market
+          served, if applicable.
+        expr: ECONOMIC_ACTIVITY
+        data_type: TEXT
+        sample_values:
+          - None
+          - 'Broad sector: Industry'
+          - 'Broad sector: Services'
+      - name: ECONOMIC_CLASS
+        synonyms:
+          - '  '
+        description: A grouping of individuals in a society based on economic terms
+          (e.g., income, wealth, occupation), if applicable.
+        expr: ECONOMIC_CLASS
+        data_type: TEXT
+        sample_values:
+          - None
+          - Near poor >= USD 3.20 and < USD 5.5 PPP
+          - '>= USD 3.20 PPP'
+      - name: MEASUREMENT_TYPE
+        synonyms:
+          - '  '
+        description: Measurement classification of the variable (ex. estimate, margin
+          of error).
+        expr: MEASUREMENT_TYPE
+        data_type: TEXT
+        sample_values:
+          - 'Margin of Error: Lower Bound'
+          - 'Margin of Error: Upper Bound'
+          - Estimate
+  - name: INTERNATIONAL_LABOUR_ORGANIZATION_TIMESERIES
+    description: "Global labor market data on employment, unemployment, labor force\
+      \ participation, and other measures broken down by demographic and economic\
+      \ characteristics, provided by the International Labour Organization (ILO).\n\
+      \nThe International Labour Organization (ILO), a specialized international agency\
+      \ of the United Nations focused on human and labor rights, offers data on various\
+      \ aspects of the labor market, including employment, unemployment, labor force\
+      \ participation, and other measures of labor market status and trends. The model\
+      \ estimates they provide cover parameters such as sex, age, settlement classification,\
+      \ employment status, occupation, economic activity, and economic class. \n\n\
+      Each row represents a distinct timeseries, date, and value by geographic entity.\
+      \ Each variable is detailed in the international_labour_organization_attributes\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: INTERNATIONAL_LABOUR_ORGANIZATION_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place joinable to the GEOGRAPHY_INDEX
+          table.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - country/TKM
+          - country/LAO
+          - country/MWI
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: A unique identifier for a variable joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - SDG_0852_SEX_AGE_RT,A_SEX_M_AGE_YTHADULT_YGE25_E
+          - UNE_2UNE_SEX_AGE_NB,A_SEX_M_AGE_YTHADULT_YGE25_E
+          - EMP_2EMP_SEX_GEO_STE_NB,A_SEX_T_GEO_COV_NAT_STE_ICSE93_5_E
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Unemployment by sex and age -- ILO modelled estimates | Male | Age (Youth,
+            adults): 25+, Annual (Count), Estimate'
+          - 'SDG indicator 1.1.1 - Working poverty rate (percentage of employed living
+            below US$1.90 PPP) (%) | Female | Age (Youth, adults): 15+, Annual (Percent),
+            Estimate'
+          - 'Labour force by sex, age and rural / urban areas | Female | Age (Youth,
+            adults): 15+ | National, Annual (Count), Estimate'
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Percent
+          - Count
+          - International $ at PPP
+      - name: VALUE_COMMENT
+        synonyms:
+          - '  '
+        description: Comment on the source, measurement, and definition of the value.
+        expr: VALUE_COMMENT
+        data_type: TEXT
+        sample_values:
+          - 'Value Status: Break in series | Source: Labour Force Survey | Source
+            Note: Repository: ILO-STATISTICS - Micro data processing | Indicator Note:
+            Break in series: Methodology revised'
+          - 'Value Status: Imputation | Source: Modeled Estimates'
+          - 'Source: Current Population Survey | Source Note: Repository: ILO-STATISTICS
+            - Micro data processing | Age coverage - minimum age: 16 years old | Indicator
+            Note: Frequency: Monthly'
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '2019-12-31'
+          - '2008-12-31'
+          - '2009-12-31'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: FLOAT
+        sample_values:
+          - '74052.0'
+          - '8231107.0'
+          - '221403682.0'

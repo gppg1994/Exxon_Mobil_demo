@@ -1,0 +1,179 @@
+name: yaml1
+tables:
+  - name: UNITED_NATIONS_INDUSTRIAL_DEVELOPMENT_ORGANIZATION_ATTRIBUTES
+    description: "Manufacturing sector statistics for countries, including performance\
+      \ and trends, using the ISIC Revision 3 framework for comparability across years,\
+      \ provided by the United Nations Industrial Development Organization (UNIDO).\n\
+      \nThe UNIDO is an agency of the United Nations that promotes industrial development\
+      \ for poverty reduction, inclusive globalization, and environmental sustainability.\
+      \ INDSTAT, which adheres to the International Standard Industrial Classification\
+      \ of All Economic Activities (ISIC) Revision 3, provides statistics on the manufacturing\
+      \ sector, analyzing industrial performance and trends by country. The consistent\
+      \ application of ISIC Revision 3 ensures comparability in industrial data across\
+      \ years.\n\nProvides a wide format breakdown of variables included in the united_nations_industrial_development_organization_timeseries\
+      \ table. The related economic activity and INDSTAT version are provided for\
+      \ reference."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: UNITED_NATIONS_INDUSTRIAL_DEVELOPMENT_ORGANIZATION_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - value_added_102_mining_and_agglomeration_of_lignite_indstat_2024_isic_revision_3_in_usd
+          - gross_fixed_capital_formation_221_publishing_indstat_2024_isic_revision_3_in_usd
+          - wages_and_salaries_2021_veneer_sheets_plywood_particle_board_etc_indstat_2024_isic_revision_3_in_usd
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Establishments: 241 Basic chemicals (INDSTAT 2024, ISIC Revision 3)'
+          - 'Gross fixed capital formation: 27 Basic metals (INDSTAT 2024, ISIC Revision
+            3) (in USD)'
+          - 'Wages and salaries: 2109 Other articles of paper and paperboard (INDSTAT
+            2024, ISIC Revision 3) (in USD)'
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Establishments
+          - Wages and salaries
+          - Index numbers of industrial production
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - USD
+          - Monetary
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Annual
+      - name: ISIC_ECONOMIC_ACTIVITY
+        synonyms:
+          - '  '
+        description: An economic activity category within the International Standard
+          Industrial Classification (ISIC) of All Economic Activites system, which
+          was developed by the United Nations.
+        expr: ISIC_ECONOMIC_ACTIVITY
+        data_type: TEXT
+        sample_values:
+          - Extraction of crude oil and natural gas
+          - Tanks, reservoirs and containers of metal
+          - Veneer sheets, plywood, particle board, etc.
+      - name: INDSTAT_VERSION
+        synonyms:
+          - '  '
+        description: INDSTAT database version; INDSTAT releases new versions of INDSTAT
+          2 with ISIC Revision 3 on an annual basis.
+        expr: INDSTAT_VERSION
+        data_type: TEXT
+        sample_values:
+          - INDSTAT 2 2016, ISIC Revision 3
+          - INDSTAT 2 2017, ISIC Revision 3
+          - INDSTAT 2024, ISIC Revision 3
+  - name: UNITED_NATIONS_INDUSTRIAL_DEVELOPMENT_ORGANIZATION_TIMESERIES
+    description: "Manufacturing sector statistics by country, including industrial\
+      \ performance and trends, from 2016 to 2023, using the ISIC Revision 3 classification,\
+      \ provided by the United Nations Industrial Development Organization (UNIDO).\n\
+      \nThe UNIDO is an agency of the United Nations that promotes industrial development\
+      \ for poverty reduction, inclusive globalization, and environmental sustainability.\
+      \ INDSTAT, which adheres to the International Standard Industrial Classification\
+      \ of All Economic Activities (ISIC) Revision 3, provides statistics on the manufacturing\
+      \ sector, analyzing industrial performance and trends by country. The consistent\
+      \ application of ISIC Revision 3 ensures comparability in industrial data across\
+      \ years.\n\nEach row represents a distinct timeseries, date, and value by geographic\
+      \ entity. Each variable is detailed in the united_nations_industrial_development_organization_attributes\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: UNITED_NATIONS_INDUSTRIAL_DEVELOPMENT_ORGANIZATION_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place. Joinable to other geography
+          tables including GEOGRAPHY_INDEX, GEOGRAPHY_RELATIONSHIPS, and GEOGRAPHY_CHARACTERISTICS.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - country/ALB
+          - country/DZA
+          - country/AFG
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - establishments_33_medical_precision_and_optical_instruments_indstat_2024_isic_revision_3
+          - employees_23_cokerefined_petroleum_productsnuclear_fuel_indstat_2024_isic_revision_3
+          - establishments_3210_electronic_valves_tubes_etc_indstat_2024_isic_revision_3
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Establishments: 33 Medical, precision and optical instruments (INDSTAT
+            2024, ISIC Revision 3)'
+          - 'Establishments: 24 Chemicals and chemical products (INDSTAT 2024, ISIC
+            Revision 3)'
+          - 'Establishments: 36 Furniture; manufacturing n.e.c. (INDSTAT 2024, ISIC
+            Revision 3)'
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: TEXT
+        sample_values:
+          - '20539328'
+          - '1105423'
+          - '22940136'
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - USD
+          - Index
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '1983-12-31'
+          - '1973-12-31'
+          - '1979-12-31'

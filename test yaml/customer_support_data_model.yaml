@@ -1,0 +1,45 @@
+description: Semantic model for managing and analyzing customer support data.
+name: Customer Support Data Model
+tables:
+- base_table:
+    database: customer support_db
+    schema: public
+    table: customer support_table_7
+  description: A logical table capturing key customer support data.
+  dimensions:
+  - data_type: TEXT
+    description: The unique ID of the department.
+    expr: dept_id
+    name: department_id
+    unique: true
+  - data_type: TEXT
+    description: Category or type of customer support activity.
+    expr: customer support_cat
+    name: customer support_category
+    sample_values:
+    - Type A
+    - Type B
+    - Type C
+    unique: false
+  filters:
+  - description: Filter for recent customer support data (last 30 days).
+    expr: created_at > CURRENT_DATE - INTERVAL '30 DAYS'
+    name: customer support_recent_data
+  measures:
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total number of records in customer support data.
+    expr: COUNT(*)
+    name: total_records
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total amount related to customer support operations.
+    expr: total_amt
+    name: total_amount
+  name: customer support_data_7
+  time_dimensions:
+  - data_type: TIMESTAMP
+    description: The timestamp of the record creation.
+    expr: created_at
+    name: created_at
+    unique: false

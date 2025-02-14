@@ -1,0 +1,160 @@
+name: yaml5
+tables:
+  - name: DATACOMMONS_ATTRIBUTES
+    description: "Demographic, economic, government spending, and environmental statistics\
+      \ at national, state, county, and municipal levels, aggregated by Data Commons.\n\
+      \nData Commons is an open source project that integrates data from various public\
+      \ sources to power contextual Google Search. Data Commons covers a variety of\
+      \ topics including demographic, economic, government spending, and environmental\
+      \ statistics at national, state, county, and municipal levels.\n\nProvides a\
+      \ wide format breakdown of variables included in the datacommons_timeseries\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: DATACOMMONS_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: A unique identifier for a statistical variable, joinable to the
+          DATACOMMONS_TIMESERIES table
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - Annual_Emissions_GreenhouseGas_NonBiogenic
+          - Annual_Emissions_CarbonDioxide_NonBiogenic
+          - AirQualityIndex_AirPollutant
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable name for the variable
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Annual Emissions of Non Biogenic Greenhouse Gases
+          - 'Annual Amount of Emissions: Biogenic Emission Source, Carbon Dioxide'
+          - Annual Emissions of Non Biogenic Carbon Dioxide
+      - name: VARIABLE_GROUP
+        synonyms:
+          - '  '
+        description: The core variable being measured excluding any information around
+          measurement method. Variables belonging to the same group measure the same
+          thing but differ on measurement method or reporting agency
+        expr: VARIABLE_GROUP
+        data_type: TEXT
+        sample_values:
+          - Annual Emissions of Non Biogenic Greenhouse Gases
+          - 'Annual Amount of Emissions: Biogenic Emission Source, Carbon Dioxide'
+          - Annual Emissions of Non Biogenic Carbon Dioxide
+      - name: CATEGORY
+        synonyms:
+          - '  '
+        description: Overarching category of the variable or measure type (e.g., Weather,
+          Demographics, etc.)
+        expr: CATEGORY
+        data_type: TEXT
+        sample_values:
+          - Emissions_EmissionSourceType-BiogenicEmissionSource_EmittedThing
+          - Emissions_EmissionSourceType-NonBiogenicEmissionSource_EmittedThing
+          - Person_MedicalCondition-AllTeethLoss
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measure for the value (e.g., USD, Years, Acre, etc.)
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Years
+          - MetricTonCO2e
+          - Index
+      - name: SOURCE_DOMAIN
+        synonyms:
+          - '  '
+        description: Domain of the URL where the raw data can be found
+        expr: SOURCE_DOMAIN
+        data_type: TEXT
+        sample_values:
+          - europa.eu
+          - cdc.gov
+          - epa.gov
+  - name: DATACOMMONS_TIMESERIES
+    description: "Demographic, economic, government spending, and environmental statistics\
+      \ at national, state, county, and municipal levels, aggregated by Data Commons.\n\
+      \nData Commons is an open source project that integrates data from various public\
+      \ sources to power contextual Google Search. Data Commons covers a variety of\
+      \ topics including demographic, economic, government spending, and environmental\
+      \ statistics at national, state, county, and municipal levels. This data primarily\
+      \ revolves around geographic entities from the national, state, county, municipal,\
+      \ zip code, and census tract levels.\n\nEach row represents a distinct timeseries,\
+      \ date, and value by geographic entity. Each variable is detailed in the datacommons_attributes\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: DATACOMMONS_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place joinable to the GEOGRAPHY_INDEX
+          table
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - geoId/5300135
+          - geoId/2076275
+          - geoId/3939536
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: A unique identifier for a statistical variable. Each statistical
+          variable represents a unique measure (ie. Population, Median Income, etc.)
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - Mean_Rainfall
+          - Count_Person_EducationalAttainmentNoSchoolingCompleted
+          - Count_Person_18To24Years
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable name for the variable
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Retail Drug Distribution of Drug Distribution: Drug/dea/2270'
+          - Population With Private Health Insurance
+          - Population With Public Health Insurance
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measure for the value (e.g., USD, Years, Acre, etc.)
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Millimeter
+          - Index
+          - Kilometer
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '1968-03-01'
+          - '1914-12-01'
+          - '1911-08-01'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: The actual numeric value for a given variable
+        expr: VALUE
+        data_type: NUMBER
+        sample_values:
+          - '48.00000000000'
+          - '1.48478000000'
+          - '120.00000000000'

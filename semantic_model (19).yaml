@@ -1,0 +1,147 @@
+name: yaml5
+tables:
+  - name: FBI_CRIME_ATTRIBUTES
+    description: "Estimated crime statistics for both state and national levels in\
+      \ the US from the FBI.\n\nThe FBI, or Federal Bureau of Investigation, is the\
+      \ principal federal law enforcement agency in the United States, tasked with\
+      \ investigating and enforcing federal laws. Data includes crime totals across\
+      \ the nation and its 50 states from 1979.\n\nProvides a wide format breakdown\
+      \ of variables included in the fbi_crime_timeseries table. The offense category\
+      \ is provided for reference."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: FBI_CRIME_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - annual_count_of_incidents_aggravated_assault
+          - annual_count_of_incidents_burglary
+          - annual_count_of_incidents_homicide
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Annual Count of Incidents, aggravated assault
+          - Annual Count of Incidents, burglary
+          - Annual Count of Incidents, homicide
+      - name: OFFENSE_CATEGORY
+        synonyms:
+          - '  '
+        description: Category of the offense, as defined by the Federal Bureau of
+          Investigation (FBI).
+        expr: OFFENSE_CATEGORY
+        data_type: TEXT
+        sample_values:
+          - Aggravated Assault
+          - Burglary
+          - Homicide
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Incidents
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Annual
+  - name: FBI_CRIME_TIMESERIES
+    description: "Estimated crime statistics for both state and national levels in\
+      \ the US from the FBI.\n\nThe FBI, or Federal Bureau of Investigation, is the\
+      \ principal federal law enforcement agency in the United States, tasked with\
+      \ investigating and enforcing federal laws. Data includes crime totals across\
+      \ the nation and its 50 states from 1979.\n\nEach row represents a distinct\
+      \ timeseries, date, and value by geographic entity. Each variable is detailed\
+      \ in the fbi_crime_attributes table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: FBI_CRIME_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place. Joinable to other geography
+          tables including GEOGRAPHY_INDEX, GEOGRAPHY_RELATIONSHIPS, and GEOGRAPHY_CHARACTERISTICS.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - country/USA
+          - geoId/02
+          - geoId/01
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - annual_count_of_incidents_violent_crime
+          - annual_count_of_incidents_homicide
+          - annual_count_of_incidents_rape_legacy
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Annual Count of Incidents, violent crime
+          - Annual Count of Incidents, homicide
+          - Annual Count of Incidents, rape legacy
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '1979-12-31'
+          - '1980-12-31'
+          - '1981-12-31'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: NUMBER
+        sample_values:
+          - '1208030'
+          - '1994'
+          - '15578'

@@ -1,0 +1,394 @@
+name: yaml2
+tables:
+  - name: US_ECONOMIC_CENSUS_ATTRIBUTES
+    description: "Detailed economic data on US businesses, such as number of establishments,\
+      \ types of goods and services provided, employment figures, payroll expenses,\
+      \ and operational costs, across different industries and geographic regions.\n\
+      \nThe Economic Census is a survey conducted by the US Census Bureau every 5\
+      \ years on number of firms, number of establishments; number of employees, payroll\
+      \ and sales, value and percentage of product shipments, revenue by geographic\
+      \ area for establishments and firms by NAICS code.\n\nProvides a wide format\
+      \ breakdown of variables included in the us_economic_census_timeseries table.\
+      \ Following attributes are provides for reference: NAICS industry classification,\
+      \ type of operation run by the establishment, establishment's tax status, Products\
+      \ and Services Code and sources of credit card services income."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: US_ECONOMIC_CENSUS_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - ADMIN_PCT_5418903_2012__00
+          - PAYQTR1_4431_2012
+          - BENEFIT_4931902_2017
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Advertising and promotional services | Automotive body, paint, and interior
+            repair and maintenance (NAICS 2012 code: 811121)'
+          - 'Establishments with 20 to 99 employees | Specialized freight (except
+            used goods) trucking, long-distance (NAICS 2012 code: 48423)'
+          - 'Total cost of supplies and/or materials | Pet and pet supplies stores
+            (NAICS 2012 code: 45391)'
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Operating expenses
+          - Employment
+          - Gasoline and diesel fuel
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Percent
+          - USD
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Annual
+      - name: NAICS_CODE
+        synonyms:
+          - '  '
+        description: Industry classification according to North American Industry
+          Classification System.
+        expr: NAICS_CODE
+        data_type: TEXT
+        sample_values:
+          - '54111'
+          - '53221'
+          - '561440'
+      - name: NAICS_DESCRIPTION
+        synonyms:
+          - '  '
+        description: Description of Industry classification according to North American
+          Industry Classification System.
+        expr: NAICS_DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - Residential property managers
+          - Automotive body, paint, and interior repair and maintenance
+          - Activities related to real estate
+      - name: OPERATION_TYPE
+        synonyms:
+          - '  '
+        description: Type of operation run by the establishment (e.g., Merchant wholesalers;
+          Manufacturer's sales branches and offices).
+        expr: OPERATION_TYPE
+        data_type: TEXT
+        sample_values:
+          - None
+          - All establishments
+          - Merchant wholesalers, except manufacturers' sales branches and offices
+      - name: TAX_STATUS
+        synonyms:
+          - '  '
+        description: Establishment's tax status (e.g., exempt from or subject to federal
+          income tax).
+        expr: TAX_STATUS
+        data_type: TEXT
+        sample_values:
+          - None
+          - All establishments
+          - Establishments subject to federal income tax
+      - name: PRODUCT_SERVICES_LINE
+        synonyms:
+          - '  '
+        description: Related product or service.
+        expr: PRODUCT_SERVICES_LINE
+        data_type: TEXT
+        sample_values:
+          - Receipts for machine shop job work and job order repairs
+          - Other engine equipment manufacturing
+          - Point-of-sale terminals and fund-transfer devices
+      - name: CREDIT_CARD_SERVICES_INCOME
+        synonyms:
+          - '  '
+        description: Specific source of credit card products or services income category
+          (e.g., from cardholder fees, interest, merchant fees).
+        expr: CREDIT_CARD_SERVICES_INCOME
+        data_type: TEXT
+        sample_values:
+          - All sources of credit card services income
+          - All sources of credit card services income from other fees
+          - All sources of credit card products income from cardholder fees
+  - name: US_ECONOMIC_CENSUS_TIMESERIES
+    description: "Detailed economic data on US businesses, such as number of establishments,\
+      \ types of goods and services provided, employment figures, payroll expenses,\
+      \ and operational costs, across different industries and geographic regions.\n\
+      \nThe Economic Census is a survey conducted by the US Census Bureau every 5\
+      \ years on number of firms, number of establishments; number of employees, payroll\
+      \ and sales, value and percentage of product shipments, revenue by geographic\
+      \ area for establishments and firms by NAICS code.\n  \nEach row represents\
+      \ a distinct timeseries, date, and value by geographic entity. Each variable\
+      \ is detailed in the us_economic_census_attributes table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: US_ECONOMIC_CENSUS_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place. Joinable to other geography
+          tables including GEOGRAPHY_INDEX, GEOGRAPHY_RELATIONSHIPS, and GEOGRAPHY_CHARACTERISTICS.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - geoId/3754580
+          - geoId/1380956
+          - geoId/4605780
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - CEXMCH_48121_2012
+          - PCHOEXP_451110_2017
+          - CSTSCNT_S_446199_2012
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - "Employer's cost for defined contribution plans | Cemeteries and crematories\
+            \ (NAICS 2017 code: 812220)"
+          - 'Production workers average for year | Wood kitchen cabinet and countertop
+            manufacturing (NAICS 2012 code: 337110)'
+          - 'Value of construction work for establishments with no inventories | Professional,
+            scientific, and technical services (NAICS 2017 code: 54) | Type of Operation:
+            All establishments | Tax Status: Establishments subject to federal income
+            tax'
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: TEXT
+        sample_values:
+          - '2012-12-31'
+          - '2017-12-31'
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Percent
+          - Kilowatt-hour
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: FLOAT
+        sample_values:
+          - '2.0'
+          - '101000.0'
+          - '6.0'
+  - name: US_TREASURY_ATTRIBUTES
+    description: "Corporate bond yields, savings bond data, Treasury security issuance\
+      \ and interest rates, and revenue collection figures for the US government.\n\
+      \nThe US Treasury provides data on various financial indicators of the US government,\
+      \ including data on corporate bond yield spot and average rates, savings bonds,\
+      \ securities issued in TreasuryDirect, average interest rates on Treasury securities,\
+      \ and revenue collections. This data details the US corporate bond market, government\
+      \ debt issuance, bond market activity, interest rate trends, and the government’s\
+      \ income sources.\n\nProvides a wide format breakdown of variables included\
+      \ in the us_treasury_timeseries table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: US_TREASURY_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - treasurydirect_sales_by_term_count_marketable_security_note
+          - treasurydirect_sales_by_term_count_marketable_security_note_from_certificates_of_indebtedness
+          - treasurydirect_sales_by_term_amount_marketable_security_note_from_certificates_of_indebtedness
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'TreasuryDirect Sales by Term Count: Marketable Security Note'
+          - 'TreasuryDirect Sales by Term Count: Marketable Security Note (From Certificates
+            of Indebtedness)'
+          - 'TreasuryDirect Sales by Term Amount: Marketable Security Note'
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - TreasuryDirect Sales by Term
+          - TreasuryDirect Sales
+          - Paper Savings Bonds
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - USD
+          - Percent
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Monthly
+          - Daily
+      - name: MEASUREMENT_TYPE
+        synonyms:
+          - '  '
+        description: Type of US Treasury instrument being measured (e.g., Savings
+          Bond Series E).
+        expr: MEASUREMENT_TYPE
+        data_type: TEXT
+        sample_values:
+          - Marketable Security Note
+          - Marketable Security Note (From Certificates of Indebtedness)
+          - 'Marketable Security '
+      - name: TAX_CATEGORY
+        synonyms:
+          - '  '
+        description: Tax category as reported by the US Treasury, which are not mutually
+          exclusive. The Tax Category Total contains the sum of the Non-Tax and Internal
+          Revenue Service (IRS) Tax amounts. The five categories are 1. Non-Tax -
+          Sum of IRS-Non-Tax and Non-Tax (other than IRS Non-Tax). 2. IRS Non-Tax
+          - Collections for ALCs (Agency Location Codes) that begin with 2009 but
+          do not include any of the IRS Service Centers. 3. IRS Tax - Collections
+          for the IRS Service Center ALCs. 4. Non-Tax (other than IRS Non-Tax) - Collections
+          that do not begin with ALC 2009. 5. IRS Tax & IRS Non-Tax - Sum of IRS Non-Tax
+          and IRS Tax.
+        expr: TAX_CATEGORY
+        data_type: TEXT
+        sample_values:
+          - None
+          - Non-Tax
+          - IRS Tax
+  - name: US_TREASURY_TIMESERIES
+    description: "Corporate bond yields, savings bond data, Treasury security issuance\
+      \ and interest rates, and revenue collection figures for the US government,\
+      \ provided by the US Treasury.\n\nThe US Treasury provides data on various financial\
+      \ indicators of the US government, including data on corporate bond yield spot\
+      \ and average rates, savings bonds, securities issued in TreasuryDirect, average\
+      \ interest rates on Treasury securities, and revenue collections. This data\
+      \ details the US corporate bond market, government debt issuance, bond market\
+      \ activity, interest rate trends, and the government’s income sources.\n\nEach\
+      \ row represents a distinct timeseries, date, and value by geographic entity.\
+      \ Each variable is detailed in the us_treasury_attributes table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: US_TREASURY_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place. Joinable to other geography
+          tables including GEOGRAPHY_INDEX, GEOGRAPHY_RELATIONSHIPS, and GEOGRAPHY_CHARACTERISTICS.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - country/USA
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - '315'
+          - '141'
+          - '221'
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Non-Tax Net Collections Amount: Non-Electronic (Over-the-Counter)'
+          - 'IRS Tax Net Collections Amount: Fiscal Service Processed Electronically
+            (Over-the-Counter)'
+          - 'Non-Tax Net Collections Amount: Non-Electronic (Mail)'
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - USD
+          - Percent
+          - Count
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '2025-01-28'
+          - '2025-01-27'
+          - '2025-01-24'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: FLOAT
+        sample_values:
+          - '18139851.0'
+          - '309.0'
+          - '333665166.0'

@@ -1,0 +1,45 @@
+description: Semantic model for managing and analyzing procurement data.
+name: Procurement Data Model
+tables:
+- base_table:
+    database: procurement_db
+    schema: public
+    table: procurement_table_9
+  description: A logical table capturing key procurement data.
+  dimensions:
+  - data_type: TEXT
+    description: The unique ID of the department.
+    expr: dept_id
+    name: department_id
+    unique: true
+  - data_type: TEXT
+    description: Category or type of procurement activity.
+    expr: procurement_cat
+    name: procurement_category
+    sample_values:
+    - Type A
+    - Type B
+    - Type C
+    unique: false
+  filters:
+  - description: Filter for recent procurement data (last 30 days).
+    expr: created_at > CURRENT_DATE - INTERVAL '30 DAYS'
+    name: procurement_recent_data
+  measures:
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total number of records in procurement data.
+    expr: COUNT(*)
+    name: total_records
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total amount related to procurement operations.
+    expr: total_amt
+    name: total_amount
+  name: procurement_data_9
+  time_dimensions:
+  - data_type: TIMESTAMP
+    description: The timestamp of the record creation.
+    expr: created_at
+    name: created_at
+    unique: false

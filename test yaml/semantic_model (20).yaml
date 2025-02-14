@@ -1,0 +1,207 @@
+name: yamlk
+tables:
+  - name: FEDERAL_RESERVE_ATTRIBUTES
+    description: "Borrowing patterns, credit card debt, commercial paper, finance\
+      \ companies, industrial production, capacity utilization, assets, liabilities,\
+      \ and net worth in the US, provided by the Fed.\n\nThe Federal Reserve, often\
+      \ referred to as the Fed, is the central banking system of the US. The data\
+      \ details (1) Consumer Credit - borrowing patterns, credit card debt, and other\
+      \ forms of consumer loans, (2) Commercial Paper - a short-term debt instrument\
+      \ used by corporations for financing, (3) health and activity of Finance Companies,\
+      \ (4) Industrial Production and Capacity Utilization of the manufacturing sector,\
+      \ and (5) US Financial Accounts - assets, liabilities, and net worth.\n\nProvides\
+      \ a wide format breakdown of variables included in the federal_reserve_timeseries\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: FEDERAL_RESERVE_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - CP_AB.10_20.AA.AMT
+          - CP_AB.1_4.AA.AMT
+          - CP_DTBSPCKNO.WW
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Amount of AA asset-backed commercial paper maturing in 1-4 days (USD),
+            Daily
+          - Other commercial paper outstanding (USD), Weekly (Seasonally adjusted)
+          - Directly placed asset-backed commercial paper outstanding (USD), Weekly
+            (Not seasonally adjusted)
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Commercial Paper
+          - Capacity Utilization
+          - 'Industrial Production: Gross Value of Products'
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - USD
+          - Percent
+      - name: SEASONALLY_ADJUSTED
+        synonyms:
+          - '  '
+        description: Indicates whether the value is seasonally adjusted.
+        expr: SEASONALLY_ADJUSTED
+        data_type: TEXT
+        sample_values:
+          - Not seasonally adjusted
+          - None
+          - Seasonally adjusted
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Daily
+          - Quarterly
+          - Monthly
+      - name: CATEGORY
+        synonyms:
+          - '  '
+        description: Related industry or financial instrument category.
+        expr: CATEGORY
+        data_type: TEXT
+        sample_values:
+          - Trade credits and advances; liability (IMA)
+          - Total currency and deposits; asset (F2)
+          - Debt securities issued by domestic sectors; asset
+      - name: NAICS
+        synonyms:
+          - '  '
+        description: North American Industry Classification System code.
+        expr: NAICS
+        data_type: TEXT
+        sample_values:
+          - '313'
+          - None
+          - ''
+      - name: SECTOR
+        synonyms:
+          - '  '
+        description: Related fund, government, business, or other authority.
+        expr: SECTOR
+        data_type: TEXT
+        sample_values:
+          - 'Other financial intermediaries except insurance companies and pension
+            funds '
+          - Corporate business
+          - 'Domestic financial sectors '
+      - name: TERMS
+        synonyms:
+          - '  '
+        description: Details the terms that apply to a particular financial object,
+          like maturity range or maturity term.
+        expr: TERMS
+        data_type: TEXT
+        sample_values:
+          - 'AA asset-backed | Maturity Range: 10-20 days'
+          - 'AA asset-backed | Maturity Range: 1-4 days'
+          - 'AA asset-backed | Maturity Range: 21-40 days'
+  - name: FEDERAL_RESERVE_TIMESERIES
+    description: "Borrowing patterns, credit card debt, commercial paper, finance\
+      \ companies, industrial production, capacity utilization, assets, liabilities,\
+      \ and net worth in the US, provided by the Fed.\n\nThe Federal Reserve, often\
+      \ referred to as the Fed, is the central banking system of the US. The data\
+      \ details (1) Consumer Credit - borrowing patterns, credit card debt, and other\
+      \ forms of consumer loans, (2) Commercial Paper - a short-term debt instrument\
+      \ used by corporations for financing, (3) health and activity of Finance Companies,\
+      \ (4) Industrial Production and Capacity Utilization of the manufacturing sector,\
+      \ and (5) US Financial Accounts - assets, liabilities, and net worth.\n\nProvides\
+      \ historical values for each variable collected.\n\nEach row represents a distinct\
+      \ timeseries, date, and value by geographic entity. Each variable is detailed\
+      \ in the federal_reserve_attributes table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: FEDERAL_RESERVE_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place. Joinable to other geography
+          tables including GEOGRAPHY_INDEX, GEOGRAPHY_RELATIONSHIPS, and GEOGRAPHY_CHARACTERISTICS.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - country/USA
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - G20_DTBOEL_XDF_BA_N.M
+          - G19_DTCOLRHC_XDF_BA_N.M
+          - G20_STFAF_XDF_BA_N.Q
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Owned and Securitized assets: Other Business Loans Owned And Securitized
+            By Finance Companies Level, Monthly (Not seasonally adjusted)'
+          - 'Industrial Production: Total index, Monthly (Seasonally adjusted)'
+          - 'Industrial Production: Aerospace and miscellaneous transportation eq.,
+            NAICS=3364-9, Annual (Not seasonally adjusted)'
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - 'Currency: Base = 2017'
+          - Percent
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '2011-05-31'
+          - '2015-12-31'
+          - '2021-08-31'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: FLOAT
+        sample_values:
+          - '0.0311'
+          - '321600000.0'
+          - '0.041299999999999996'

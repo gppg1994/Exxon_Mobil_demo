@@ -1,0 +1,280 @@
+name: yaml2
+tables:
+  - name: AMERICAN_COMMUNITY_SURVEY_ATTRIBUTES
+    description: "Population variables covering demographic, social, economic, and\
+      \ housing trends in the US, releasing 1-year and 5-year estimates annually.\n\
+      \nThe US Census Bureau's American Community Survey (ACS) is an annual survey\
+      \ based on a subset of the population (unlike the decennial census, which aims\
+      \ to count every individual). The ACS provides data at various geographic levels.\
+      \ They provide 1-year and 5-year estimates on a rolling basis (e.g., a 5-year\
+      \ estimate in 2022 would be based on data collected between January 1, 2018\
+      \ and December 31, 2022). 1-year estimates are available for areas with populations\
+      \ of 65,000+. 5-year estimates are available for all areas.\n\nProvides a wide\
+      \ format breakdown of variables included in the american_community_survey_timeseries\
+      \ table. The ACS Series ID is provided for reference."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: AMERICAN_COMMUNITY_SURVEY_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - B02011_001M_1YR
+          - B02011_001E_5YR
+          - B21006_036E_1YR
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Median Earnings In The Past 12 Months (In 2022 Inflation-Adjusted Dollars)
+            By Sex By Work Experience In The Past 12 Months For The Population 16
+            Years And Over With Earnings In The Past 12 Months: Population | Median
+            earnings in the past 12 months (in 2022 inflation-adjusted dollars) |
+            Female | Other | White Alone, 5yr Estimate (2022)'
+          - 'Median Earnings In The Past 12 Months (In 2022 Inflation-Adjusted Dollars)
+            By Sex By Work Experience In The Past 12 Months For The Population 16
+            Years And Over With Earnings In The Past 12 Months: Population | Median
+            earnings in the past 12 months (in 2022 inflation-adjusted dollars) |
+            Male | Other | Some Other Race Alone, 5yr Margin of Error (2022)'
+          - 'Detailed Occupation By Median Earnings In The Past 12 Months (In 2022
+            Inflation-Adjusted Dollars) For The Full-Time, Year-Round Civilian Employed
+            Male Population 16 Years And Over: Population | Other rail transportation
+            workers, 1yr Margin of Error (2022)'
+      - name: SERIES_ID
+        synonyms:
+          - '  '
+        description: Unique ACS identifier for the subject of the ACS variable.
+        expr: SERIES_ID
+        data_type: TEXT
+        sample_values:
+          - B24123
+          - B19001I
+          - C27012
+      - name: CENSUS_SUBJECT
+        synonyms:
+          - '  '
+        description: ACS high-level description for the subject/category of the variable.
+        expr: CENSUS_SUBJECT
+        data_type: TEXT
+        sample_values:
+          - Housing Characteristics
+          - Industry, Occupation, and Class of Worker
+          - Health Insurance Coverage
+      - name: SERIES_TYPE
+        synonyms:
+          - '  '
+        description: ACS detailed description for the subject/category of the variable.
+        expr: SERIES_TYPE
+        data_type: TEXT
+        sample_values:
+          - Detailed Occupation By Median Earnings In The Past 12 Months (In 2020
+            Inflation-Adjusted Dollars) For The Full-Time, Year-Round Civilian Employed
+            Female Population 16 Years And Over
+          - Sex By Work Experience In The Past 12 Months By Earnings In The Past 12
+            Months (In 2015 Inflation-Adjusted Dollars) For The Population 16 Years
+            And Over
+          - Sex By Occupation And Median Earnings In The Past 12 Months (In 2011 Inflation-Adjusted
+            Dollars) For The Full-Time, Year-Round Civilian Employed Population 16
+            Years And Over
+      - name: RACE
+        synonyms:
+          - '  '
+        description: Associated race with the population variable.
+        expr: RACE
+        data_type: TEXT
+        sample_values:
+          - White Alone
+          - American Indian and Alaska Native Alone
+          - Some Other Race Alone
+      - name: SERIES_LEVEL_1
+        synonyms:
+          - '  '
+        description: First characteristic that makes up a variable, specific to a
+          series ID, helpful for comparison across variables within a series (if available).
+        expr: SERIES_LEVEL_1
+        data_type: TEXT
+        sample_values:
+          - Female
+          - Householder 25 to 44 years
+          - Householder 45 to 64 years
+      - name: SERIES_LEVEL_2
+        synonyms:
+          - '  '
+        description: Second characteristic that makes up a variable, specific to a
+          series ID, helpful for comparison across variables within a series (if available).
+        expr: SERIES_LEVEL_2
+        data_type: TEXT
+        sample_values:
+          - $25,000 to $29,999
+          - Female householder (dollars)
+          - Other
+      - name: SERIES_LEVEL_3
+        synonyms:
+          - '  '
+        description: Third characteristic that makes up a variable, specific to a
+          series ID, helpful for comparison across variables within a series (if available).
+        expr: SERIES_LEVEL_3
+        data_type: TEXT
+        sample_values:
+          - None
+          - With earnings
+          - Management, business, and financial occupations
+      - name: SERIES_LEVEL_4
+        synonyms:
+          - '  '
+        description: Fourth characteristic that makes up a variable, specific to a
+          series ID, helpful for comparison across variables within a series (if available).
+        expr: SERIES_LEVEL_4
+        data_type: TEXT
+        sample_values:
+          - Life, physical, and social science occupations
+          - Health care (7970:8290)
+          - Social assistance (8370-8470)
+      - name: SERIES_LEVEL_5
+        synonyms:
+          - '  '
+        description: Fifth characteristic that makes up a variable, specific to a
+          series ID, helpful for comparison across variables within a series (if available).
+        expr: SERIES_LEVEL_5
+        data_type: TEXT
+        sample_values:
+          - Male
+          - Engineers (1320:1530)
+          - Householder 65 years and over
+      - name: SERIES_LEVEL_6
+        synonyms:
+          - '  '
+        description: Sixth characteristic that makes up a variable, specific to a
+          series ID, helpful for comparison across variables within a series (if available).
+        expr: SERIES_LEVEL_6
+        data_type: TEXT
+        sample_values:
+          - None
+          - Database and systems administrators and network architects (1065:1106)
+          - Unemployed
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute; description of what is being recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Population
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Percentage
+          - Weeks
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Annual
+      - name: MEASUREMENT_TYPE
+        synonyms:
+          - '  '
+        description: Measurement classification of the variable (ex. estimate, margin
+          of error).
+        expr: MEASUREMENT_TYPE
+        data_type: TEXT
+        sample_values:
+          - Margin of Error
+          - Estimate
+      - name: MEASUREMENT_PERIOD
+        synonyms:
+          - '  '
+        description: Data collection period for the variable (ex. 1YR or 5 YR).
+        expr: MEASUREMENT_PERIOD
+        data_type: TEXT
+        sample_values:
+          - 1YR
+          - 5YR
+  - name: AMERICAN_COMMUNITY_SURVEY_TIMESERIES
+    description: "Annual population estimates with detailed demographic, social, economic,\
+      \ and housing data at multiple geographic levels, from national to census block\
+      \ group.\n\nThe US Census Bureau's American Community Survey (ACS) is an annual\
+      \ survey based on a subset of the population (unlike the decennial census, which\
+      \ aims to count every individual). The ACS provides data at various geographic\
+      \ levels. They provide 1-year and 5-year estimates on a rolling basis (e.g.,\
+      \ a 5-year estimate in 2022 would be based on data collected between January\
+      \ 1, 2018 and December 31, 2022). 1-year estimates are available for areas with\
+      \ populations of 65,000+. 5-year estimates are available for all areas.\n\n\
+      Each row represents a distinct timeseries collected by the ACS, date, and value\
+      \ by geographic entity JOINABLE to Cybersyn's geography tables. Each variable\
+      \ is detailed in the american_community_survey_attributes table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: AMERICAN_COMMUNITY_SURVEY_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place joinable to the GEOGRAPHY_INDEX
+          table.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - zip/62627
+          - zip/62629
+          - zip/81001
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: A unique identifier for a variable joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - B17013_010M_1YR
+          - B23007_025M_5YR
+          - B23007_021E_1YR
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Poverty Status In The Past 12 Months Of Families By Household Type By
+            Number Of Persons In Family: Population | Income in the past 12 months
+            below poverty level | Other families | Male householder, no spouse present
+            | 2 people, 1yr Estimate'
+          - 'Mortgage Status By Real Estate Taxes Paid: Population | Not mortgaged
+            | $1,500 to $1,999, 1yr Estimate'
+          - 'Mortgage Status By Real Estate Taxes Paid: Population | Not mortgaged
+            | $1,500 to $1,999, 1yr Margin of Error'
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '2018-12-31'
+          - '2016-12-31'
+          - '2014-12-31'

@@ -1,0 +1,45 @@
+description: Semantic model for managing and analyzing product data.
+name: Product Data Model
+tables:
+- base_table:
+    database: product_db
+    schema: public
+    table: product_table_8
+  description: A logical table capturing key product data.
+  dimensions:
+  - data_type: TEXT
+    description: The unique ID of the department.
+    expr: dept_id
+    name: department_id
+    unique: true
+  - data_type: TEXT
+    description: Category or type of product activity.
+    expr: product_cat
+    name: product_category
+    sample_values:
+    - Type A
+    - Type B
+    - Type C
+    unique: false
+  filters:
+  - description: Filter for recent product data (last 30 days).
+    expr: created_at > CURRENT_DATE - INTERVAL '30 DAYS'
+    name: product_recent_data
+  measures:
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total number of records in product data.
+    expr: COUNT(*)
+    name: total_records
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total amount related to product operations.
+    expr: total_amt
+    name: total_amount
+  name: product_data_8
+  time_dimensions:
+  - data_type: TIMESTAMP
+    description: The timestamp of the record creation.
+    expr: created_at
+    name: created_at
+    unique: false

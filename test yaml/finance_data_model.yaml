@@ -1,0 +1,45 @@
+description: Semantic model for managing and analyzing finance data.
+name: Finance Data Model
+tables:
+- base_table:
+    database: finance_db
+    schema: public
+    table: finance_table_2
+  description: A logical table capturing key finance data.
+  dimensions:
+  - data_type: TEXT
+    description: The unique ID of the department.
+    expr: dept_id
+    name: department_id
+    unique: true
+  - data_type: TEXT
+    description: Category or type of finance activity.
+    expr: finance_cat
+    name: finance_category
+    sample_values:
+    - Type A
+    - Type B
+    - Type C
+    unique: false
+  filters:
+  - description: Filter for recent finance data (last 30 days).
+    expr: created_at > CURRENT_DATE - INTERVAL '30 DAYS'
+    name: finance_recent_data
+  measures:
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total number of records in finance data.
+    expr: COUNT(*)
+    name: total_records
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total amount related to finance operations.
+    expr: total_amt
+    name: total_amount
+  name: finance_data_2
+  time_dimensions:
+  - data_type: TIMESTAMP
+    description: The timestamp of the record creation.
+    expr: created_at
+    name: created_at
+    unique: false

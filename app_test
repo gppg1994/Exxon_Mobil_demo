@@ -1,0 +1,60 @@
+import yaml
+from langchain.llms import AzureOpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
+from dotenv import load_dotenv
+import os
+
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_DEPLOYMENT_NAME = os.getenv("OPENAI_DEPLOYMENT_NAME")
+AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
+AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION")
+
+llm=AzureOpenAI(
+        api_key=OPENAI_API_KEY,
+        azure_endpoint=AZURE_OPENAI_ENDPOINT,
+        api_version=AZURE_OPENAI_API_VERSION,
+        azure_deployment=OPENAI_DEPLOYMENT_NAME
+        
+    )
+
+
+
+# Load YAML file (Snowflake Semantic Model)
+def load_yaml(file_path):
+    with open(file_path, "r") as file:
+        return yaml.safe_load(file)
+
+yaml_data = load_yaml("semantic_model (13).yaml")
+
+# Convert YAML to a structured string for the LLM (to understand schema)
+def format_yaml_for_prompt(yaml_data):
+    return yaml.dump(yaml_data, default_flow_style=False)
+
+formatted_yaml = format_yaml_for_prompt(yaml_data)
+
+# Define LLM
+
+
+# Updated Prompt Template for Text-to-SQL generation
+prompt = PromptTemplate(
+    input_variables=["query", "data"],
+    template=(
+        "You are an SQL expert. Use the following Snowflake schema to generate the correct SQL query. "
+        "The schema is described below:\n{data}\n"
+        "The user is asking the following question: {query}\n"
+        "Generate the corresponding Snowflake SQL query that answers the user's question."
+    )
+)
+
+llm_chain = LLMChain(llm=llm, prompt=prompt)
+
+# Ask a Question (for generating SQL)
+def generate_sql(query):
+    return llm_chain.run({"query": query, "data": formatted_yaml})
+
+# Example Q&A: User asking for an SQL query
+question = "What is the total sales for each region in the last quarter?"
+sql_query = generate_sql(question)
+print(sql_query)

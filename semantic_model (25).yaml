@@ -1,0 +1,884 @@
+name: semkkh
+tables:
+  - name: INTERNATIONAL_TRADE_ADMINISTRATION_BUSINESS_SERVICE_PROVIDERS_INDEX
+    description: "Directory of US and foreign-based businesses providing services\
+      \ that many small- and medium-sized exporters required to succeed in the foreign\
+      \ markets.\n\nThe US Department of Commerce's International Trade Administration\
+      \ (ITA) provides data on trade events, trade leads, market research, tariff\
+      \ data, and many other datasets relevant to exporters and importers. The Business\
+      \ Service Provider (BSP) directory is intended to provide an additional resource\
+      \ to US exporters. It is particularly helpful for US companies that are just\
+      \ getting started exporting or that are looking to expand into a new geographic\
+      \ market or industry.\n\nProvides a wide format overview of business service\
+      \ providers (BSPs) by BUSINESS_SERVICE_PROVIDER_ID. This table includes business-\
+      \ and geographic-details on each company covered in the BSP list."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: INTERNATIONAL_TRADE_ADMINISTRATION_BUSINESS_SERVICE_PROVIDERS_INDEX
+    dimensions:
+      - name: BUSINESS_SERVICE_PROVIDER_ID
+        synonyms:
+          - '  '
+        description: Unique company identifier for US and international business service
+          providers provided by the US Commercial Service.
+        expr: BUSINESS_SERVICE_PROVIDER_ID
+        data_type: TEXT
+        sample_values:
+          - TWV4aWNvLUxlZ2FsIFNlcnZpY2VzLURlIEFsdmEgJiBBc29jaWFkb3MtaHR0cHM6Ly9kZWFsdmEuY29tLm14Lw==
+          - TWV4aWNvLVBhdGVudCBhbmQgVHJhZGVtYXJrIExhdyBTZXJ2aWNlcy1EZSBBbHZhICYgQXNvY2lhZG9zLWh0dHBzOi8vZGVhbHZhLmNvbS5teC8=
+          - Q29sb21iaWEtSG90ZWxzIGFuZCBNZWV0aW5nIEZhY2lsaXRpZXMtSE9URUwgSElMVE9OIENBUlRBR0VOQS1odHRwOi8vY2FydGFnZW5hLmhpbHRvbi5jb20=
+      - name: GEO_ID_COUNTRY
+        synonyms:
+          - '  '
+        description: Unique geographic identifier for the country of the business
+          service provider.
+        expr: GEO_ID_COUNTRY
+        data_type: TEXT
+        sample_values:
+          - country/MEX
+          - country/AUS
+          - country/COL
+      - name: BUSINESS_SERVICE_PROVIDER_NAME
+        synonyms:
+          - '  '
+        description: Name of the business service provider.
+        expr: BUSINESS_SERVICE_PROVIDER_NAME
+        data_type: TEXT
+        sample_values:
+          - De Alva & Asociados
+          - HOTEL HILTON CARTAGENA
+          - bioaccess
+      - name: BUSINESS_SERVICE_PROVIDER_DESCRIPTION
+        synonyms:
+          - '  '
+        description: Description of the business service provider.
+        expr: BUSINESS_SERVICE_PROVIDER_DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - We are a Mexican Intellectual Property Law Firm specialized in Trademarks,
+            Patents, Copyrights, Domain Names and Litigation Procedures related to
+            Intellectual Property rights.
+          - "\"Framed by palms and the Caribbean Sea, the Hilton Cartagena Hotel has\
+            \ a privileged location in El Laguito peninsula, close to the magical\
+            \ realism of Cartagena's walled city.\r\nEnjoy an everlasting beachside\
+            \ experience and the tropical elegance of our indoor facilities, outdoor\
+            \ venues, pool complex, and on-site convention center. It is the perfect\
+            \ balance between business and pleasure.\r\nLet us enchant you with personalized\
+            \ service while you work or spend time with your loved ones in this pet-friendly\
+            \ hotel.\r\n \r\nJoin Hilton HHonors the guest reward program that lets\
+            \ you earn Points & Miles for faster free travel at more 6.000 Hilton\
+            \ Family hotels Worldwide. Membership is free! Join today and start earning\
+            \ immediately! Visit HHonors.com.\""
+          - bioaccess™ is a CRO, regulatory, and market access consulting company
+            that delivers a full spectrum of clinical, regulatory, and market access
+            offerings from bench to commercialization so that medtechs can succeed
+            in Colombia. Our promise is for medtechs that believe that Colombia offers
+            untapped potential to conduct clinical trials or to sell their innovations.
+            We focus on medtechs that want to run a clinical trial or want to have
+            sales growth in Colombia. We promise that by engaging with us, you will
+            cost-effectively get the clinical data you need or will be able to obtain
+            regulatory market clearance in Colombia.
+      - name: SERVICE_CATEGORY
+        synonyms:
+          - '  '
+        description: Category of export/investment assistance service provided by
+          the business service provider.
+        expr: SERVICE_CATEGORY
+        data_type: TEXT
+        sample_values:
+          - Legal Services
+          - Patent and Trademark Law Services
+          - Hotels and Meeting Facilities
+      - name: BUSINESS_SERVICE_PROVIDER_WEBSITE
+        synonyms:
+          - '  '
+        description: Website of the business service provider.
+        expr: BUSINESS_SERVICE_PROVIDER_WEBSITE
+        data_type: TEXT
+        sample_values:
+          - https://dealva.com.mx/
+          - http://cartagena.hilton.com
+          - https://www.bioaccessla.com/
+      - name: BUSINESS_SERVICE_PROVIDER_ADDRESS
+        synonyms:
+          - '  '
+        description: Address of the business service provider.
+        expr: BUSINESS_SERVICE_PROVIDER_ADDRESS
+        data_type: TEXT
+        sample_values:
+          - "Montecito 38 Piso 34-10 World Trade Center\r\nMexico City CDMX, 03810\
+            \ Mexico"
+          - "El Laguito, Avenida Almirante Brion\r\nCartagena, Colombia"
+          - "2430 S Orange Ave. Suite 321\r\nOrlando FL , 32806 United States"
+      - name: BUSINESS_SERVICE_PROVIDER_CONTACT
+        synonyms:
+          - '  '
+        description: Main point of contact for inquiries and requests at the business
+          service provider.
+        expr: BUSINESS_SERVICE_PROVIDER_CONTACT
+        data_type: TEXT
+        sample_values:
+          - Sergio De Alva, Partner
+          - Claudia  Valbuena Garcia, Sales Manager, Cluster – Hilton Colombia
+          - Julio G.  Martinez-Clark, President / Ceo
+      - name: BUSINESS_SERVICE_PROVIDER_EMAIL
+        synonyms:
+          - '  '
+        description: Email of the point of contact at the business service provider.
+        expr: BUSINESS_SERVICE_PROVIDER_EMAIL
+        data_type: TEXT
+        sample_values:
+          - dealva@dealva.com.mx
+          - claudia.valbuena@hilton.com
+          - info@bioaccessla.com
+      - name: BUSINESS_SERVICE_PROVIDER_PHONE
+        synonyms:
+          - '  '
+        description: Phone number of the point of contact at the business service
+          provider.
+        expr: BUSINESS_SERVICE_PROVIDER_PHONE
+        data_type: TEXT
+        sample_values:
+          - +1 (786) 626-9277
+          - 57 310 210 7403
+          - +1 407 259-4464
+      - name: INTERNATIONAL_TRADE_ADMINISTRATION_EMAIL
+        synonyms:
+          - '  '
+        description: Email of the associated International Trade Administration office.
+        expr: INTERNATIONAL_TRADE_ADMINISTRATION_EMAIL
+        data_type: TEXT
+        sample_values:
+          - alejandra.calderon@trade.gov
+          - norcia.wardmarin@trade.gov
+          - madeleine.simpson@trade.gov
+  - name: INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_SCREENED_ENTITIES_INDEX
+    description: "Compilation of export screening lists of companies, entities, or\
+      \ persons from the Departments of Commerce, State, and the Treasury that would\
+      \ require additional due diligence.\n\nThe US Department of Commerce's International\
+      \ Trade Administration (ITA) provides data on trade events, trade leads, market\
+      \ research, tariff data, and many other datasets relevant to exporters and importers.\
+      \ The Consolidated Screening List enables businesses to stay compliant with\
+      \ exporting law. In the event that a company, entity or person on the list appears\
+      \ to match a party potentially involved in an export transaction, additional\
+      \ due diligence should be conducted before proceeding. There may be a strict\
+      \ export prohibition, requirement for seeking a license application, evaluation\
+      \ of the end-use or user to ensure it does not result in an activity prohibited\
+      \ by any U.S. export regulations, or other restriction.\n\nProvides a wide format\
+      \ overview of entities that would require additional screening if part of an\
+      \ export transaction (by EXPORT_RESTRICTED_ENTITY_ID).\n\nThis table includes\
+      \ associated information with each entity type (e.g. for a vessel, the vessel's\
+      \ call sign, gross registered tonnage, and gross tonnage are provided), including\
+      \ the source of the data."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_SCREENED_ENTITIES_INDEX
+    dimensions:
+      - name: EXPORT_RESTRICTED_ENTITY_ID
+        synonyms:
+          - '  '
+        description: Unique identifier provided by the International Trade Administration
+          (ITA) for the entity listed with a prefix associated with the source.
+        expr: EXPORT_RESTRICTED_ENTITY_ID
+        data_type: TEXT
+        sample_values:
+          - SDN-17448
+          - SDN-47431
+          - SDN-47551
+      - name: EXPORT_RESTRICTED_ENTITY_NAME
+        synonyms:
+          - '  '
+        description: The name of the individual, group, vessel, or entity on the list
+          (e.g., Khokhlova, Olga Nikolayevna).
+        expr: EXPORT_RESTRICTED_ENTITY_NAME
+        data_type: TEXT
+        sample_values:
+          - Sanjesh Gostar Dana Engineering And Quality Control Inspection Company
+          - Wuxi Naura Microelectronics Equipment Co., Ltd.
+          - Al-Israa Establishment For Import And Export
+      - name: EXPORT_RESTRICTED_ENTITY_TITLE
+        synonyms:
+          - '  '
+        description: The title for an individual, group, vessel, or entity on the
+          list (e.g., Member of the Federation Council of the Federal Assembly of
+          the Russian Federation).
+        expr: EXPORT_RESTRICTED_ENTITY_TITLE
+        data_type: TEXT
+        sample_values:
+          - Minister of Foreign Affairs of the Russian Federation
+          - Iran Crude Oil Tanker
+          - Cook Islands Crude Oil Tanker
+      - name: EXPORT_RESTRICTED_ENTITY_TYPE
+        synonyms:
+          - '  '
+        description: The type of entity that is listed (e.g., Vessel, Individual,
+          Entity, Aircraft).
+        expr: EXPORT_RESTRICTED_ENTITY_TYPE
+        data_type: TEXT
+        sample_values:
+          - Individual
+          - Entity
+          - None
+      - name: FEDERAL_REGISTER_NOTICE
+        synonyms:
+          - '  '
+        description: The Federal Register citation indicating the law or policy under
+          which the entity is listed.
+        expr: FEDERAL_REGISTER_NOTICE
+        data_type: TEXT
+        sample_values:
+          - 89 FR 51653
+          - 87 F.R. 38709 6/29/2022; 87 F.R. 78921 12/27/2022, 88 F.R. 40205 6/21/2023,
+            88 F.R. 86626 12/14/2023, 89 F.R. 100952 12/13/2024
+          - 88 FR 70352; 89 FR 87264
+      - name: GEO_ID_COUNTRY
+        synonyms:
+          - '  '
+        description: Unique geographic identifier for the country associated with
+          the listing.
+        expr: GEO_ID_COUNTRY
+        data_type: TEXT
+        sample_values:
+          - None
+          - country/IRN
+          - country/TUR
+      - name: STANDARD_ORDER
+        synonyms:
+          - '  '
+        description: A general directive applied to transactions with the listed entity.
+        expr: STANDARD_ORDER
+        data_type: TEXT
+        sample_values:
+          - None
+          - Y
+          - ''
+      - name: VESSEL_CALL_SIGN
+        synonyms:
+          - '  '
+        description: The unique call sign assigned to a vessel for identification
+          purposes, similar to a license plate number on a vehicle.
+        expr: VESSEL_CALL_SIGN
+        data_type: TEXT
+        sample_values:
+          - '3E5020'
+          - ''
+          - UHEQ
+      - name: VESSEL_GROSS_REGISTERED_TONNAGE
+        synonyms:
+          - '  '
+        description: A measure of the overall internal volume of a vessel, with one
+          gross registered tonnage unit representing 100 cubic feet of space.
+        expr: VESSEL_GROSS_REGISTERED_TONNAGE
+        data_type: TEXT
+        sample_values:
+          - '2489'
+          - '85462'
+          - '160930'
+      - name: VESSEL_GROSS_TONNAGE
+        synonyms:
+          - '  '
+        description: A more modern measurement of a ship's size that is calculated
+          based on the volume of all enclosed spaces of a ship.
+        expr: VESSEL_GROSS_TONNAGE
+        data_type: TEXT
+        sample_values:
+          - '317367'
+          - '11658'
+          - '8015'
+      - name: SOURCE
+        synonyms:
+          - '  '
+        description: Name of the source that identified and monitors this company,
+          entity, or person.
+        expr: SOURCE
+        data_type: TEXT
+        sample_values:
+          - Denied Persons List (DPL) - Bureau of Industry and Security
+          - Specially Designated Nationals (SDN) - Treasury Department
+          - ITAR Debarred (DTC) - State Department
+      - name: SOURCE_INFORMATION_URL
+        synonyms:
+          - '  '
+        description: URL for the source.
+        expr: SOURCE_INFORMATION_URL
+        data_type: TEXT
+        sample_values:
+          - https://www.bis.doc.gov/index.php/policy-guidance/lists-of-parties-of-concern/denied-persons-list
+          - https://www.bis.doc.gov/index.php/policy-guidance/lists-of-parties-of-concern/entity-list
+          - https://www.pmddtc.state.gov/ddtc_public?id=ddtc_kb_article_page&sys_id=c22d1833dbb8d300d0a370131f9619f0
+      - name: SOURCE_LIST_URL
+        synonyms:
+          - '  '
+        description: URL for the source list or further information about the entry.
+        expr: SOURCE_LIST_URL
+        data_type: TEXT
+        sample_values:
+          - https://www.bis.doc.gov/index.php/the-denied-persons-list
+          - https://www.bis.doc.gov/index.php/policy-guidance/lists-of-parties-of-concern/unverified-list
+          - https://sanctionslist.ofac.treas.gov/Home/ConsolidatedList
+      - name: COMMENTS
+        synonyms:
+          - '  '
+        description: Associated comments from the organization on the entity.
+        expr: COMMENTS
+        data_type: TEXT
+        sample_values:
+          - '(Linked To: JIANGXI LIANSHENG TECHNOLOGY CO., LTD)'
+          - '(Linked To: MALLAH, Abdul Jalil)'
+          - '(Linked To: STATE UNITARY ENTERPRISE STATE GRAIN OPERATOR)'
+    time_dimensions:
+      - name: START_DATE
+        synonyms:
+          - '  '
+        description: The date when the listing came into effect.
+        expr: START_DATE
+        data_type: DATE
+        sample_values:
+          - None
+      - name: END_DATE
+        synonyms:
+          - '  '
+        description: The date when the listing will no longer be valid.
+        expr: END_DATE
+        data_type: DATE
+        sample_values:
+          - None
+    measures:
+      - name: EXPORT_RESTRICTED_ENTITY_NUMBER
+        synonyms:
+          - '  '
+        description: Unique identifier for the entity.
+        expr: EXPORT_RESTRICTED_ENTITY_NUMBER
+        data_type: NUMBER
+        sample_values:
+          - '50137'
+          - '33678'
+          - '24314'
+  - name: INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_ASSISTANCE_CENTERS_INDEX
+    description: "Directory of all of the International Trade Administration's (ITA)\
+      \ domestic and international export assistance centers.\n\nThe US Department\
+      \ of Commerce's International Trade Administration (ITA) provides data on trade\
+      \ events, trade leads, market research, tariff data, and many other datasets\
+      \ relevant to exporters and importers. ITA centers are often collocated with\
+      \ offices from the State Department or other trade agencies. Therefore, the\
+      \ addresses change with some regularity.\n\nProvides a wide format overview\
+      \ of domestic and international ITA centers by INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_ASSISTANCE_CENTER_ID.\
+      \ This table provides contact and address information for all of ITA\\’s centers."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_ASSISTANCE_CENTERS_INDEX
+    dimensions:
+      - name: INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_ASSISTANCE_CENTER_ID
+        synonyms:
+          - '  '
+        description: Unique identifier for each International Trade Administration
+          (ITA) export assistance center.
+        expr: INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_ASSISTANCE_CENTER_ID
+        data_type: TEXT
+        sample_values:
+          - VW5pdGVkIFN0YXRlcy1QaXR0c2J1cmdo
+          - VW5pdGVkIFN0YXRlcy1IYXJyaXNidXJn
+          - VW5pdGVkIFN0YXRlcy1CaXJtaW5naGFt
+      - name: INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_ASSISTANCE_CENTER_NAME
+        synonyms:
+          - '  '
+        description: Name of the ITA export assistance center.
+        expr: INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_ASSISTANCE_CENTER_NAME
+        data_type: TEXT
+        sample_values:
+          - Pittsburgh U.S Commerical Service
+          - Harrisburg U.S. Commercial Service
+          - Birmingham U.S. Export Assistance Center
+      - name: INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_ASSISTANCE_CENTER_POST
+        synonyms:
+          - '  '
+        description: Name of the ITA post (usually a major city associated with the
+          ITA export assistance center).
+        expr: INTERNATIONAL_TRADE_ADMINISTRATION_EXPORT_ASSISTANCE_CENTER_POST
+        data_type: TEXT
+        sample_values:
+          - Pittsburgh
+          - Harrisburg
+          - Birmingham
+      - name: GEO_ID_COUNTRY
+        synonyms:
+          - '  '
+        description: Unique geographic identifier for the country associated with
+          the ITA export assistance center.
+        expr: GEO_ID_COUNTRY
+        data_type: TEXT
+        sample_values:
+          - country/USA
+          - country/MEX
+          - country/CIV
+      - name: GEO_ID_STATE
+        synonyms:
+          - '  '
+        description: Unique geographic identifier for the state associated with the
+          ITA export assistance center.
+        expr: GEO_ID_STATE
+        data_type: TEXT
+        sample_values:
+          - geoId/42
+          - geoId/01
+          - geoId/29
+      - name: ADDRESS
+        synonyms:
+          - '  '
+        description: Address for the ITA export assistance center.
+        expr: ADDRESS
+        data_type: TEXT
+        sample_values:
+          - U.S. Commercial Service, William S. Moorhead Federal Building, 1000 Liberty
+            Avenue, Suite 807, Pittsburgh, PA 15222
+          - 1000 North Cameron Street, Harrisburg, PA  17103
+          - Alabama U.S. Export Assistance Center, 1800 5th Ave N, Ste 3300, Birmingham,
+            AL  35203-2111
+      - name: APO_ADDRESS
+        synonyms:
+          - '  '
+        description: Mailing address for military posts abroad.
+        expr: APO_ADDRESS
+        data_type: TEXT
+        sample_values:
+          - U.S. Commercial Service, William S. Moorhead Federal Building, 1000 Liberty
+            Avenue, Suite 807, Pittsburgh, PA 15222
+          - None
+          - Alabama U.S. Export Assistance Center, 1800 5th Ave N, Ste 3300, Birmingham,
+            AL  35203-2111
+      - name: MAIL_INSTRUCTIONS
+        synonyms:
+          - '  '
+        description: Special mail instructions for reaching out to the ITA export
+          assistance center.
+        expr: MAIL_INSTRUCTIONS
+        data_type: TEXT
+        sample_values:
+          - www.trade.gov/pennsylvania-pittsburgh
+          - None
+          - North Texas USEAC covers all of Dallas and Ft Worth
+      - name: WEBSITE_URL
+        synonyms:
+          - '  '
+        description: URL for the ITA export assistance center.
+        expr: WEBSITE_URL
+        data_type: TEXT
+        sample_values:
+          - None
+          - http://www.export.gov/alabama/
+          - http://export.gov/missouri/kansascity/
+      - name: EMAIL
+        synonyms:
+          - '  '
+        description: Email address for the ITA export assistance center.
+        expr: EMAIL
+        data_type: TEXT
+        sample_values:
+          - ryan.russell@trade.gov
+          - Nicolas.Cervantes@trade.gov
+          - robert.stackpole@trade.gov
+      - name: PHONE
+        synonyms:
+          - '  '
+        description: Phone number for the ITA export assistance center.
+        expr: PHONE
+        data_type: TEXT
+        sample_values:
+          - 412-644-2800
+          - 717-678-5275
+          - '2054073599'
+      - name: FAX
+        synonyms:
+          - '  '
+        description: Fax number for the ITA export assistance center.
+        expr: FAX
+        data_type: TEXT
+        sample_values:
+          - 412-644-2803
+          - None
+          - 205-4075399
+  - name: INTERNATIONAL_TRADE_ADMINISTRATION_TRADE_LEADS_INDEX
+    description: "Directory of contract opportunities for US businesses selling their\
+      \ products and services overseas.\n\nThe US Department of Commerce's International\
+      \ Trade Administration (ITA) provides data on trade events, trade leads, market\
+      \ research, tariff data, and many other datasets relevant to exporters and importers.\
+      \ Trade leads, procurement opportunities, and contract notifications originate\
+      \ from \tThe State Department’s Business Information Database System (BIDS),\
+      \ FedBizOps, The United Kingdom, Canada, The Millennium Challenge Corporation,\
+      \ Australia, and The United States Trade and Development Agency (USTDA)\n\n\
+      Provides a wide format overview of contract leads for US businesses by TRADE_LEAD_ID.\n\
+      \nThis table includes a description of the lead and details on the associated\
+      \ timing. Currently, only leads from the UK are provided."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: INTERNATIONAL_TRADE_ADMINISTRATION_TRADE_LEADS_INDEX
+    dimensions:
+      - name: TRADE_LEAD_ID
+        synonyms:
+          - '  '
+        description: Unique identifier from the International Trade Administration
+          (ITA) to specify a lead.
+        expr: TRADE_LEAD_ID
+        data_type: TEXT
+        sample_values:
+          - UK-aHR0cHM6Ly93d3cuY29udHJhY3RzZmluZGVyLnNlcnZpY2UuZ292LnVrL05vdGljZS8xZTM1ZmYyNS03YmNjLTRmM2EtOWQzNS1mYWVhMWMwMjJhNGM
+          - UK-aHR0cHM6Ly93d3cuY29udHJhY3RzZmluZGVyLnNlcnZpY2UuZ292LnVrL05vdGljZS8yZTYxNGEwMS1mZDg4LTRmMzQtYWMwMC0wZTUwMDg1YTgxOTI
+          - UK-aHR0cHM6Ly93d3cuY29udHJhY3RzZmluZGVyLnNlcnZpY2UuZ292LnVrL05vdGljZS9mZWZlMjA3Ni01MzIwLTQ4YmYtOTQ2MS05NmNhZjEwOWI4MDc
+      - name: TRADE_LEAD_TITLE
+        synonyms:
+          - '  '
+        description: Title that identifies a lead.
+        expr: TRADE_LEAD_TITLE
+        data_type: TEXT
+        sample_values:
+          - Civils Support DPS (South West Region) - Pre-Qualification
+          - 'Supply Chain Notice: Temeraire 3G Football Pitch Replacement'
+          - Clay Cross SNT New Build
+      - name: TRADE_LEAD_DESCRIPTION
+        synonyms:
+          - '  '
+        description: Long-form text that specifies the details of the lead.
+        expr: TRADE_LEAD_DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - "The Science Division (SD) of the Health and Safety Executive invites\
+            \ competitive quotations for the Supply of the following items to their\
+            \ Laboratory located at Harpur Hill, Buxton SK17 9JN.\r\n\r\nWe require\
+            \ the machining of materials test specimens to the specifications and\
+            \ tolerances presented in the specification on In-Tend\r\n\r\nAdditional\
+            \ information: All tender documents are available via the HSE In-Tend\
+            \ supplier e-procurement portal. All responses and requests for clarification\
+            \ must be submitted via the portal. Registration is free of charge and\
+            \ can be completed via the following link:\r\n\r\nhttps://in-tendhost.co.uk/hse"
+          - "The Department for Business and Trade (DBT) Office for Product Safety\
+            \ and Standards (OPSS) is the appointed Market Surveillance Authority\
+            \ responsible for enforcing the Electric Vehicle (Smart Charge Points)\
+            \ Regulations 2021 within the UK. \r\n\r\nThis involves ensuring that\
+            \ electric vehicle charging points are of the right quality and that robust\
+            \ and effective regulatory action is taken against serious weaknesses\
+            \ and poor practice. \r\n\r\nOPSS intend to procure the testing of up\
+            \ to 15 charge points for compliance against most of the requirements\
+            \ of the Electric Vehicle Smart Charge Points Regulations 2021."
+          - "Work packages for the construction delivery services at Imjin Barracks\
+            \ for the Defence Estate Optimisation Portfolio. Lendlease are delivering\
+            \ works at Imjin Barracks on behalf of the Defence Infrastructure Organisation\
+            \ involving the reconfiguration and refurbishment of existing infrastructure\
+            \ and construction of new infrastructure to provide the MOD with improved\
+            \ Live/Work/Train requirements.\r\n\r\nHigh-level Scope of works:\r\n\r\
+            \nProvision and installation of exterior doors to new build assets and\
+            \ refurbishment assets.\r\n\r\nAdditional information: \r\nMinimum Compliance\
+            \ Requirements\r\n\r\nLendlease Financial Performance and Accreditation\
+            \ requirements, Lendlease Global Minimum Requirements, Building Information\
+            \ Modelling requirements, BPSS"
+      - name: TRADE_LEAD_URL
+        synonyms:
+          - '  '
+        description: URL to the details of the lead.
+        expr: TRADE_LEAD_URL
+        data_type: TEXT
+        sample_values:
+          - https://www.contractsfinder.service.gov.uk/Notice/196e0ed1-4be2-42ad-b60e-abb7affea054
+          - https://www.contractsfinder.service.gov.uk/Notice/e446a5cc-e3ae-42e2-8967-00568d4e7e99
+          - https://www.contractsfinder.service.gov.uk/Notice/47e55f06-6190-4a20-ae0e-829bf477cc17
+      - name: GEO_ID_COUNTRY
+        synonyms:
+          - '  '
+        description: Unique geographic identifier for the country associated with
+          the contract.
+        expr: GEO_ID_COUNTRY
+        data_type: TEXT
+        sample_values:
+          - country/GBR
+    time_dimensions:
+      - name: CONTRACT_START_DATE
+        synonyms:
+          - '  '
+        description: Date on which the contract begins and the associated work on
+          the contract should begin.
+        expr: CONTRACT_START_DATE
+        data_type: DATE
+        sample_values:
+          - '2025-11-28'
+          - '2025-04-01'
+          - '2025-02-22'
+      - name: CONTRACT_END_DATE
+        synonyms:
+          - '  '
+        description: Date on which the contract ends, when all services or goods must
+          be delivered and the work completed.
+        expr: CONTRACT_END_DATE
+        data_type: DATE
+        sample_values:
+          - '2027-04-30'
+          - '2027-02-24'
+          - '2025-09-01'
+      - name: TENDER_START_DATE
+        synonyms:
+          - '  '
+        description: Date on which bids start to be accepted.
+        expr: TENDER_START_DATE
+        data_type: DATE
+        sample_values:
+          - None
+      - name: TENDER_END_DATE
+        synonyms:
+          - '  '
+        description: Date on which the bidding process ends.
+        expr: TENDER_END_DATE
+        data_type: DATE
+        sample_values:
+          - '2025-03-31'
+          - '2028-04-05'
+          - '2025-02-21'
+      - name: PUBLISHED_DATE
+        synonyms:
+          - '  '
+        description: Date the lead was made public or announced to potential bidders
+          by the International Trade Administration (ITA).
+        expr: PUBLISHED_DATE
+        data_type: DATE
+        sample_values:
+          - '2024-01-25'
+          - '2024-04-05'
+          - '2025-01-08'
+  - name: INTERNATIONAL_TRADE_ADMINISTRATION_TRADE_EVENTS_INDEX
+    description: "Directory of events for US businesses interested in selling their\
+      \ products and services overseas.\n\nThe US Department of Commerce's International\
+      \ Trade Administration (ITA) provides data on trade events, trade leads, market\
+      \ research, tariff data, and many other datasets relevant to exporters and importers.\
+      \ Trade events include industry conferences, webinars, lectures, and trade missions\
+      \ organized by the ITA and other trade agencies (e.g., The US Trade and Development\
+      \ Agency, The State Department, The Small Business Administration). Businesses\
+      \ can get tremendous value from meeting with trade specialists and learning\
+      \ about new opportunities for their business.\n\nProvides a wide format overview\
+      \ of trade events by TRADE_EVENT_ID.\n\nThis table includes location and timing\
+      \ details for all events associated with the above trade organizations."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: INTERNATIONAL_TRADE_ADMINISTRATION_TRADE_EVENTS_INDEX
+    dimensions:
+      - name: TRADE_EVENT_ID
+        synonyms:
+          - '  '
+        description: Unique identifier for a trade event provided by the International
+          Trade Administration (ITA).
+        expr: TRADE_EVENT_ID
+        data_type: TEXT
+        sample_values:
+          - ITA-aW5ldmVudC03OTM4Nw
+          - ITA-aW5ldmVudC04MDIxNA
+          - ITA-aW5ldmVudC04MzUyMg
+      - name: TRADE_EVENT_NAME
+        synonyms:
+          - '  '
+        description: Specific name of the trade event.
+        expr: TRADE_EVENT_NAME
+        data_type: TEXT
+        sample_values:
+          - "Webinar: China's In-Vitro-Diagnostic (IVD) Market"
+          - 'Free Trade Agreements: Rules of Origin & Certification'
+          - Global Data Privacy and Data Transfer Webinar
+      - name: TRADE_EVENT_TYPE
+        synonyms:
+          - '  '
+        description: Trade event format.
+        expr: TRADE_EVENT_TYPE
+        data_type: TEXT
+        sample_values:
+          - Virtual / Online
+          - In-Person
+          - Hybrid (Virtual + In-Person)
+      - name: TRADE_EVENT_URL
+        synonyms:
+          - '  '
+        description: URL to see the trade event details.
+        expr: TRADE_EVENT_URL
+        data_type: TEXT
+        sample_values:
+          - https://www.trade.gov/attend-event
+          - https://www.trade.gov/developing-global-market-pathways-us-medical-device-exporters-webinar-series
+          - https://www.enlit-europe.com/
+      - name: TRADE_EVENT_DESCRIPTION
+        synonyms:
+          - '  '
+        description: Description of the trade event details.
+        expr: TRADE_EVENT_DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - "<ul>\n<li style=\"font-family:Merriweather, Arial, Verdana, sans-serif;line-height:1.33;font-size:32px;\"\
+            >Expo Residuos 2025 <br /><span style=\"font-size:14pt;\">It is an industrial\
+            \ exhibition 100% specialized in waste management. </span><br /><span\
+            \ style=\"font-size:14pt;\">Expo Residuos was born as a response to one\
+            \ of the most concerning challenges today: the increase in waste generation\
+            \ and the need to implement innovative processes and technologies for\
+            \ the proper management of waste with a circular approach.</span><br /><span\
+            \ style=\"font-size:14pt;\">Since the first year, Expo Residuos has positioned\
+            \ itself as the first event of its kind in Mexico and after nine years,\
+            \ it has become a benchmark for business and networking. This event brings\
+            \ together the most innovative and well-known brands of waste management\
+            \ solutions with decision makers of manufacturing companies, services\
+            \ and government that are looking for suppliers for their solid waste\
+            \ management needs. </span><br /><span style=\"font-size:14pt;\">In Mexico,\
+            \ there are great business opportunities:</span></li>\n<li style=\"font-family:Merriweather,\
+            \ Arial, Verdana, sans-serif;line-height:1.33;font-size:32px;\"><span\
+            \ style=\"font-size:14pt;\">An estimated 120,128 tons of municipal solid\
+            \ waste is generated daily of which an average of 84% is collected (SEMARNAT).</span><br\
+            \ /><span style=\"font-size:14pt;\"></span></li>\n<li style=\"font-family:Merriweather,\
+            \ Arial, Verdana, sans-serif;line-height:1.33;font-size:32px;\"><span\
+            \ style=\"font-size:14pt;\">Waste management infrastructure is lagging\
+            \ behind. In Mexico City collection is carreid out with 16,615 vehicles,\
+            \ a third of whoch are more than 24 yeards old, and there are only 47\
+            \ waste treatment plants, including composting plants and 25 sorting plants\
+            \ (SEDEMA).</span></li>\n<li style=\"font-family:Merriweather, Arial,\
+            \ Verdana, sans-serif;line-height:1.33;font-size:32px;\"><span style=\"\
+            font-size:14pt;\">The genration of hazardous waste from 115,158 companies\
+            \ alone was 2.45 million tons (2004 to 2017) (PGRP-SEMARNAT).</span></li>\n\
+            <li style=\"font-family:Merriweather, Arial, Verdana, sans-serif;line-height:1.33;font-size:32px;\"\
+            ><span style=\"font-size:14pt;\">In Mexico City alone, 401 tons of controlled\
+            \ Special Handling Waste are produced daily (SEDEMA).</span></li>\n</ul>"
+          - "<p class=\"MsoNormal\">The Indonesian Government released a Procurement\
+            \ Notice to medical equipment suppliers in September last year. This large\
+            \ loan, worth almost $4 billion, was co-financed by three Multilateral\
+            \ Development Banks (MDBs): the World Bank, the Asian Development Bank\
+            \ (ADB), and the Asian Infrastructure Investment Bank (AIIB). The Islamic\
+            \ Development Bank (IsDB) also finances it through parallel financing.\
+            \ The World Bank acts as the coordinating agency of the MDBs.</p>\n<p\
+            \ class=\"MsoNormal\">Companies interested in supplying the Indonesian\
+            \ public healthcare sector are invited to a free webinar to learn about\
+            \ procurement under the Ministry of Health's centralized programs using\
+            \ the World Bank procurement rules. The Ministry of Health, the World\
+            \ Bank in Indonesia, and a medical devices regulatory consultant will\
+            \ present and hold a Q&A. </p>\n<ul style=\"margin-top:0in;\">\n<li class=\"\
+            MsoNormal\"><b>When:</b> October 9, 2024 @5:00 P.M. PST/7:00 P.M. CST/8:00\
+            \ P.M. EST</li>\n<li class=\"MsoNormal\"><b>Where:</b> Online</li>\n<li\
+            \ class=\"MsoNormal\"><b>Cost:</b> Free</li>\n</ul>\n<p class=\"MsoNormal\"\
+            >For more information, contact <a href=\"mailto:Kerry.Barnett@trade.gov\"\
+            >Olga.Molnar@trade.gov</a>; <a href=\"mailto:Pepsi.Maryarini@trade.gov\"\
+            >Pepsi.Maryarini@trade.gov</a></p>\n<p class=\"MsoNormal\"></p>\n<p class=\"\
+            MsoNormal\"> </p>\n<p class=\"MsoNormal\"></p>"
+          - "<h3>Ensure the accuracy of your FTA documentation.  Apply common qualification\
+            \ methods across agreements.</h3>\n<div>Understanding how Rules of Origin\
+            \ work is necessary to take full advantage of Free Trade Agreements, including\
+            \ USMCA, and can speed your documentation process while improving customer\
+            \ service.</div>\n<div></div>\n<div>In This Webinar You Will:</div>\n\
+            <ul>\n<li>Learn how Rules of Origin in all FTAs have shared concepts,\
+            \ definitions, and formulas.</li>\n<li>Understand the central role of\
+            \ HS classification numbers. </li>\n<li>Apply different qualification\
+            \ methods.</li>\n<li>Gain a solid understanding of how Rules of Origin\
+            \ operate and how qualification for one might lead to qualification for\
+            \ many.</li>\n<li>Leave the session with a level of increased confidence\
+            \ and a toolkit of online resources</li>\n</ul>\n<div><b>What are Free\
+            \ Trade Agreements?</b></div>\n<div>Free Trade Agreements (FTAs) include\
+            \ negotiated lower or zero import tariffs.  This may mean lower costs\
+            \ for your customers and more sales for your company.  Only qualified\
+            \ products get these benefits. Manufactured products must meet the FTA’s\
+            \ Rules of Origin.<br /><br /><b>Cost:</b> $75</div>"
+      - name: REGISTRATION_TYPE
+        synonyms:
+          - '  '
+        description: Type of registration required for the trade event (e.g., Registration,
+          Application).
+        expr: REGISTRATION_TYPE
+        data_type: TEXT
+        sample_values:
+          - Registration
+          - Application
+          - None
+      - name: REGISTRATION_URL
+        synonyms:
+          - '  '
+        description: URL to sign up for the trade event.
+        expr: REGISTRATION_URL
+        data_type: TEXT
+        sample_values:
+          - https://events.trade.gov/en/TradeGov/WebinarChinaIVDMarket/index.php
+          - https://events.trade.gov/en/TradeGov/TheHarmonizedClassificationSystemforExports-9884-1/index.php
+          - https://events.trade.gov/en/TradeGov/IraqDelegationParticipationFeetoInternationalProdu/index.php
+      - name: PRIMARY_VENUE_GEO_ID_COUNTRY
+        synonyms:
+          - '  '
+        description: Unique geographic identifier for the country associated with
+          the trade event's primary venue.
+        expr: PRIMARY_VENUE_GEO_ID_COUNTRY
+        data_type: TEXT
+        sample_values:
+          - country/USA
+          - country/MEX
+          - None
+      - name: PRIMARY_VENUE_GEO_ID_STATE
+        synonyms:
+          - '  '
+        description: Unique geographic identifier for the state associated with the
+          trade event's primary venue.
+        expr: PRIMARY_VENUE_GEO_ID_STATE
+        data_type: TEXT
+        sample_values:
+          - geoId/36
+          - geoId/12
+          - geoId/17
+      - name: PRIMARY_VENUE_NAME
+        synonyms:
+          - '  '
+        description: Name of the trade event space that is the primary venue.
+        expr: PRIMARY_VENUE_NAME
+        data_type: TEXT
+        sample_values:
+          - Ernest Morial Convention Center, New Orleans, LA
+          - https://www.infocommshow.org/event-info
+          - None
+      - name: PRIMARY_VENUE_STREET
+        synonyms:
+          - '  '
+        description: Street of the trade event space that is the primary venue.
+        expr: PRIMARY_VENUE_STREET
+        data_type: TEXT
+        sample_values:
+          - None
+          - Avenida del Conscripto 311 Lomas de Sotelo
+          - Georgia World Congress Center 285 Andrew Young International Blvd NW
+      - name: PRIMARY_VENUE_CITY
+        synonyms:
+          - '  '
+        description: City of the primary venue for the trade event.
+        expr: PRIMARY_VENUE_CITY
+        data_type: TEXT
+        sample_values:
+          - Beijing
+          - New York
+          - Central America
+      - name: CONTACTS
+        synonyms:
+          - '  '
+        description: List of points of contact associated with the trade event.
+        expr: CONTACTS
+        data_type: TEXT
+        sample_values:
+          - '[]'
+          - '[{"email":"mark.cooper@trade.gov","name":"Mark Cooper","person_title":null,"phone":null,"post":null}]'
+          - '[{"email":"meredith.bond@trade.gov","name":"Sept 26 FTA program","person_title":null,"phone":null,"post":null}]'
+    time_dimensions:
+      - name: START_DATE
+        synonyms:
+          - '  '
+        description: First date of the trade event.
+        expr: START_DATE
+        data_type: DATE
+        sample_values:
+          - '2024-12-17'
+          - '2025-03-25'
+          - '2025-05-13'
+      - name: END_DATE
+        synonyms:
+          - '  '
+        description: Last date of the trade event.
+        expr: END_DATE
+        data_type: DATE
+        sample_values:
+          - '2024-10-09'
+          - '2024-10-24'
+          - '2023-11-28'

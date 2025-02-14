@@ -1,0 +1,565 @@
+name: yaml
+tables:
+  - name: US_DEPARTMENT_OF_AGRICULTURE_COMMODITIES_ATTRIBUTES
+    description: "Global agricultural commodity production, supply, and distribution\
+      \ (PSD), as reported by the US Department of Agriculture (USDA); includes area\
+      \ harvested, production, imports, exports, and consumption for commodities.\n\
+      \nManaged by the USDA's Foreign Agricultural Service (FAS), it covers a wide\
+      \ range of commodities, including grains, oilseeds, fruits, and vegetables.\
+      \ This data covers both calendar years (running from January 1st to December\
+      \ 31st) and marketing years. Marketing years typically begin in the month when\
+      \ the harvest of a particular crop starts and end before the beginning of the\
+      \ next year's harvest. This period can vary significantly among different crops\
+      \ and countries, depending on when these crops are sown and harvested. The specific\
+      \ starting month of the marketing year for each crop is essential because it\
+      \ affects how production, stocks, and trade are accounted for and compared year-over-year.\
+      \ Marketing years are used to better align the supply and demand statistics\
+      \ of a commodity with its normal production cycle. Additionally, the USDA's\
+      \ Export Sales Reporting (ESR) data provides weekly updates on the export sales\
+      \ activity of major commodities, further enhancing the understanding of market\
+      \ dynamics within these defined marketing years.\n\nProvides a wide format breakdown\
+      \ of variables included in the us_department_of_agriculture_commodities_timeseries\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: US_DEPARTMENT_OF_AGRICULTURE_COMMODITIES_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable created from a concatenation
+          of the IDs provided by the USDA (commodity code and attribute ID).
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - ESR_cotton_upland_under_1_outstanding_sales
+          - ESR_cottonseed_cake__meal_current_market_year_total_commitment
+          - PSD-2232000-161
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable description of the reported attribute, including
+          commodity type and a description of what is being recorded.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Cotton-Upland under 1": Outstanding Sales'
+          - 'Cottonseed cake & meal: Current Market Year Total Commitment'
+          - 'Palm Kernel Oilseed: Feed Waste Domestic Consumption'
+      - name: COMMODITY_TYPE
+        synonyms:
+          - '  '
+        description: The type of agricultural product (e.g., wheat, corn, rice, cotton).
+        expr: COMMODITY_TYPE
+        data_type: TEXT
+        sample_values:
+          - Cotton-Upland under 1"
+          - Cottonseed cake & meal
+          - Palm Kernel Oilseed
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute; description of what is being recorded
+          (ex. Exports, Imports).
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Outstanding Sales
+          - Current Market Year Total Commitment
+          - Feed Waste Domestic Consumption
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value (ex. Metric Tons).
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Running Bales
+          - Metric Tons
+          - Head
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations (e.g. Annual).
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Weekly
+          - Annual
+  - name: US_DEPARTMENT_OF_AGRICULTURE_COMMODITIES_TIMESERIES
+    description: "Global agricultural commodity production, supply, and distribution\
+      \ data by country, covering area harvested, production, imports, exports, and\
+      \ consumption for each commodity, provided by the US Department of Agriculture\
+      \ (USDA).\n\nManaged by the USDA's Foreign Agricultural Service (FAS), it covers\
+      \ a wide range of commodities, including grains, oilseeds, fruits, and vegetables.\
+      \ This data covers both calendar years (running from January 1st to December\
+      \ 31st) and marketing years. Marketing years typically begin in the month when\
+      \ the harvest of a particular crop starts and end before the beginning of the\
+      \ next year's harvest. This period can vary significantly among different crops\
+      \ and countries, depending on when these crops are sown and harvested. The specific\
+      \ starting month of the marketing year for each crop is essential because it\
+      \ affects how production, stocks, and trade are accounted for and compared year-over-year.\
+      \ Marketing years are used to better align the supply and demand statistics\
+      \ of a commodity with its normal production cycle. Additionally, the USDA's\
+      \ Export Sales Reporting (ESR) data provides weekly updates on the export sales\
+      \ activity of major commodities, further enhancing the understanding of market\
+      \ dynamics within these defined marketing years.\n\nEach row represents a distinct\
+      \ timeseries, data, and value by geographic entity. Each variable is detailed\
+      \ in the us_department_of_agriculture_commodities_attributes table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: US_DEPARTMENT_OF_AGRICULTURE_COMMODITIES_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a country joinable to the GEOGRAPHY_INDEX
+          table.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - country/MNP
+          - country/MAR
+          - country/LKA
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, which defines the USDA dataset
+          that the data originates (e.g., ESR - Export Sales Report), the commodity
+          associated with that variable, and what is being measured.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - PSD-0224400-028
+          - ESR_cattle_hides___whole___excluding_wet_blues_gross_new_sales
+          - ESR_corn_gross_new_sales
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable description of the reported attribute, including
+          commodity type and a description of what is being recorded.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'All Rice: Current Market Year Total Commitment'
+          - 'Wheat - SRW: Current Market Year Total Commitment'
+          - 'Dry Whole Milk Powder Dairy: Production'
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value (ex. Metric Tons).
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Metric Tons
+          - Running Bales
+          - Kilograms Per Hectare
+      - name: MARKETING_YEAR
+        synonyms:
+          - '  '
+        description: The marketing year tied to the agricultural seasons and harvest
+          periods of a specific crop. A marketing year typically begins in the month
+          when a particular crop's harvest starts and ends just before the next year's
+          harvest begin. This period can vary significantly between different crops
+          and different countries.
+        expr: MARKETING_YEAR
+        data_type: TEXT
+        sample_values:
+          - '2025'
+          - '2018'
+          - '2020'
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value (e.g., for ESR variables, it represents
+          the sales week end). See the ATTRIBUTES table for more details.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '2023-07-01'
+          - '2020-07-01'
+          - '2022-01-01'
+      - name: CALENDAR_YEAR
+        synonyms:
+          - '  '
+        description: Calendar year associated with the value.
+        expr: CALENDAR_YEAR
+        data_type: DATE
+        sample_values:
+          - '1970-01-01'
+          - '2024-12-31'
+          - '2021-12-31'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: FLOAT
+        sample_values:
+          - '0.0'
+          - '68186.0'
+          - '7039.0'
+  - name: US_DEPARTMENT_OF_LABOR_UNEMPLOYMENT_INSURANCE_CLAIMS_ATTRIBUTES
+    description: "Initial and continued unemployment insurance claims in the US and\
+      \ each state, released weekly by the US Department of Labor to track US unemployment\
+      \ trends.\n\nThe US Department of Labor provides weekly data on Unemployment\
+      \ Insurance (UI) claims. The data is used in the economic analysis of unemployment\
+      \ trends in the nation, and in each state. Initial claims measure emerging unemployment\
+      \ and continued weeks claimed measure the number of persons claiming unemployment\
+      \ benefits.\n\nProvides a wide format breakdown of variables included in the\
+      \ us_department_of_labor_unemployment_insurance_claims_timeseries table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: US_DEPARTMENT_OF_LABOR_UNEMPLOYMENT_INSURANCE_CLAIMS_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - CE
+          - IC
+          - WSEIC
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Covered Employment
+          - State Unemployment Insurance Initial Claims without Intrastate Transitional
+            Claims
+          - Adjusted Continued Weeks Claimed for Unemployment Compensation for Federal
+            Employees only
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Employment
+          - Insurance Claims
+          - Unemployment Rate
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Percent
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Weekly
+      - name: MEASUREMENT_TYPE
+        synonyms:
+          - '  '
+        description: Additional information on how the variable value is calculated.
+        expr: MEASUREMENT_TYPE
+        data_type: TEXT
+        sample_values:
+          - Reports the 12-month average monthly covered employment for the first
+            4 of the last 6 completed calendar quarters prior to the end of the last
+            week of the current 13-week period to which the insured unemployment data
+            relate
+          - None
+          - Includes Unemployment Compensation for Federal Employees adn Ex-Service
+            Members
+  - name: US_DEPARTMENT_OF_LABOR_UNEMPLOYMENT_INSURANCE_CLAIMS_TIMESERIES
+    description: "Initial and continued unemployment insurance claims in the US and\
+      \ each state, released weekly by the US Department of Labor to track US unemployment\
+      \ trends.\n\nThe US Department of Labor provides weekly data on Unemployment\
+      \ Insurance (UI) claims. The data is used in the economic analysis of unemployment\
+      \ trends in the nation, and in each state. Initial claims measure emerging unemployment\
+      \ and continued weeks claimed measure the number of persons claiming unemployment\
+      \ benefits.\n\nEach row represents a distinct timeseries, date, and value by\
+      \ geographic entity. Each variable is detailed in the us_department_of_labor_unemployment_insurance_claims_attributes\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: US_DEPARTMENT_OF_LABOR_UNEMPLOYMENT_INSURANCE_CLAIMS_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place. Joinable to other geography
+          tables including GEOGRAPHY_INDEX, GEOGRAPHY_RELATIONSHIPS, and GEOGRAPHY_CHARACTERISTICS.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - geoId/38
+          - geoId/19
+          - geoId/29
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - IC
+          - WSCW
+          - WSIC
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Adjusted Continued Weeks Claimed for Unemployment Compensation for Federal
+            Employees only
+          - Initial Claims for Unemployment Compensation for Federal Employees only
+          - 'Total Continued Weeks Claimed: Average Adjusted'
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Percent
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '2022-04-16'
+          - '2016-11-05'
+          - '2020-07-18'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: FLOAT
+        sample_values:
+          - '812.0'
+          - '47.0'
+          - '331.0'
+  - name: US_DEPARTMENT_OF_TRANSPORTATION_ATTRIBUTES
+    description: "Monthly domestic non-stop segment data reported by both US and foreign\
+      \ air carriers.\n\nThe US Department of Transportation domestic segment data\
+      \ reports both US and foreign air carriers, including carrier, origin, destination,\
+      \ aircraft type and service class for transported passengers, freight and mail,\
+      \ available capacity, scheduled departures, departures performed, aircraft hours,\
+      \ and load factor when both origin and destination airports are located within\
+      \ the boundaries of the United States and its territories.\n\nProvides a wide\
+      \ format breakdown of variables included in the us_department_of_transportation_timeseries\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: US_DEPARTMENT_OF_TRANSPORTATION_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - PASSENGERS_TRANSPORTED
+          - AVAILABLE_SEATS
+          - AVAILABLE_CAPACITY_PAYLOAD_POUNDS
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Non-Stop Segment Passengers Transported
+          - Available Seats
+          - Available Payload
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Cargo
+          - Capacity
+          - Flight Duration
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Pounds
+          - Minutes
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Monthly
+  - name: US_DEPARTMENT_OF_TRANSPORTATION_TIMESERIES
+    description: "Monthly domestic non-stop segment data reported by both US and foreign\
+      \ air carriers.\n\nThe US Department of Transportation domestic segment data\
+      \ reports both US and foreign air carriers, including carrier, origin, destination,\
+      \ aircraft type and service class for transported passengers, freight and mail,\
+      \ available capacity, scheduled departures, departures performed, aircraft hours,\
+      \ and load factor when both origin and destination airports are located within\
+      \ the boundaries of the United States and its territories.\n\nEach row represents\
+      \ a distinct timeseries, date, and value by geographic entity, JOINABLE to Cybersyn's\
+      \ geography entity tables. Each variable is detailed in the us_department_of_transportation_attributes\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: US_DEPARTMENT_OF_TRANSPORTATION_TIMESERIES
+    dimensions:
+      - name: FLIGHT_TYPE_ID
+        synonyms:
+          - '  '
+        description: A unique hash for the combination of the origin and destination
+          airports, aircraft carriers, and aircrafts. Primary key reflecting the flight
+          pattern.
+        expr: FLIGHT_TYPE_ID
+        data_type: TEXT
+        sample_values:
+          - 9a5bb11518f9b1d6944b0f62e06b32c8
+          - 4926aa102dfa347acaf0021577d5639f
+          - 576656e5e2e837370b4de67f47fcac63
+      - name: AIRCRAFT_CARRIER_ID
+        synonyms:
+          - '  '
+        description: ID for the aircraft carrier.
+        expr: AIRCRAFT_CARRIER_ID
+        data_type: TEXT
+        sample_values:
+          - '06947_62'
+          - 0A050_31
+          - '06995_12'
+      - name: AIRCRAFT_ID
+        synonyms:
+          - '  '
+        description: ID for the aircraft type, a distinctive model as designated by
+          the manufacturer.
+        expr: AIRCRAFT_ID
+        data_type: TEXT
+        sample_values:
+          - '1641'
+          - '3503'
+          - '48541'
+      - name: ORIGIN_AIRPORT_ID
+        synonyms:
+          - '  '
+        description: ID for the origin airport that is part of the flight route being
+          measured, combination of the DOT unique code and official 3 letter OAG code
+          issued for that airport.
+        expr: ORIGIN_AIRPORT_ID
+        data_type: TEXT
+        sample_values:
+          - 30977ORD
+          - 31650MSP
+          - 1489SMK
+      - name: DESTINATION_AIRPORT_ID
+        synonyms:
+          - '  '
+        description: ID for the destination airport that is part of the flight route
+          being measured, combination of the DOT unique code and official 3 letter
+          OAG code issued for that airport.
+        expr: DESTINATION_AIRPORT_ID
+        data_type: TEXT
+        sample_values:
+          - 30977MDW
+          - 30466PHX
+          - 30693BNA
+      - name: SERVICE_CLASS
+        synonyms:
+          - '  '
+        description: Type of service provided by the airline on a specific flight,
+          breaking out scheduled from non-scheduled service and the type of service.
+        expr: SERVICE_CLASS
+        data_type: TEXT
+        sample_values:
+          - Non-Scheduled Civilian Passenger Service
+          - Scheduled All Cargo Service
+          - Scheduled Passenger/Cargo Service
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - AVAILABLE_SEATS
+          - DISTANCE
+          - DEPARTURES_SCHEDULED
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Airborne Time
+          - Non-Stop Segment Freight Transported
+          - Non-Stop Segment Passengers Transported
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Pounds
+          - Miles
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '2010-12-31'
+          - '2009-10-31'
+          - '2006-11-30'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: FLOAT
+        sample_values:
+          - '5387.0'
+          - '9830.0'
+          - '262.0'

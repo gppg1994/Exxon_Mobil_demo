@@ -1,0 +1,149 @@
+name: uuigy
+tables:
+  - name: HOUSING_URBAN_DEVELOPMENT_ATTRIBUTES
+    description: "Annual state and Continuum of Care (CoC)-level homelessness estimates\
+      \ in the US from 2007 onwards.\n\nThe US Department of Housing and Urban Development\
+      \ (HUD) is a federal agency responsible for national policies on America's housing\
+      \ needs. The Annual Homeless Assessment Report (AHAR) provides estimates of\
+      \ homelessness in the US based on the Point-In-Time (PIT) count and Housing\
+      \ Inventory Count (HIC) conducted in January of each year. It provides a detailed\
+      \ view on the number of homeless individuals, chronically homeless persons,\
+      \ homeless veterans, and homeless children and youth.\n\nProvides a wide format\
+      \ breakdown of variables included in the housing_urban_development_timeseries\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: HOUSING_URBAN_DEVELOPMENT_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - sheltered_total_homeless_individuals
+          - overall_homeless_parenting_youth_under_25_gender_that_is_not_singularly_female_or_male
+          - overall_homeless_parenting_youth_under_25_multiple_races
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Sheltered Safe Haven (SH) Homeless - Gender that is not Singularly Female
+            or Male
+          - Sheltered Emergency Shelter (ES) Homeless Veterans - Male
+          - Total Beds for Households with Children (Transitional Housing (TH))
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Homelessness
+          - Beds
+          - Units
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Percent
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Annual
+  - name: HOUSING_URBAN_DEVELOPMENT_TIMESERIES
+    description: "Annual state and Continuum of Care (CoC)-level homelessness estimates\
+      \ in the US from 2007 onwards.\n\nThe US Department of Housing and Urban Development\
+      \ (HUD) is a federal agency responsible for national policies on America's housing\
+      \ needs. The Annual Homeless Assessment Report (AHAR) provides estimates of\
+      \ homelessness in the US based on the Point-In-Time (PIT) count and Housing\
+      \ Inventory Count (HIC) conducted in January of each year. It provides a detailed\
+      \ view on the number of homeless individuals, chronically homeless persons,\
+      \ homeless veterans, and homeless children and youth.\n\nEach row represents\
+      \ a distinct timeseries, date, and value by geographic entity, JOINABLE to Cybersyn's\
+      \ geography entity tables. Each variable is detailed in the housing_urban_development_attributes\
+      \ table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: HOUSING_URBAN_DEVELOPMENT_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place. Joinable to other geography
+          tables including GEOGRAPHY_INDEX, GEOGRAPHY_RELATIONSHIPS, and GEOGRAPHY_CHARACTERISTICS.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - CoC/LA-505
+          - CoC/NJ-506
+          - CoC/NE-500
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - sheltered_transitional_housing_th_homeless_unaccompanied_youth_under_25_nonhispanicnonlatinoax
+          - sheltered_emergency_shelter_es_chronically_homeless_individuals
+          - sheltered_emergency_shelter_es_homeless_people_in_families_gender_questioning
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Sheltered Total Homeless Parenting Youth (Under 25) - Gender Questioning
+          - Sheltered Safe Haven (SH) Homeless Unaccompanied Youth (Under 25) - Native
+            Hawaiian or Other Pacific Islander
+          - Unsheltered Homeless Parenting Youth (Under 25) - Transgender
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Percent
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '2014-12-31'
+          - '2018-12-31'
+          - '2016-12-31'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: FLOAT
+        sample_values:
+          - '1487.0'
+          - '250.0'
+          - '14206.0'

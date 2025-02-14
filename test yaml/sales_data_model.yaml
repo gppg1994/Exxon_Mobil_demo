@@ -1,0 +1,45 @@
+description: Semantic model for managing and analyzing sales data.
+name: Sales Data Model
+tables:
+- base_table:
+    database: sales_db
+    schema: public
+    table: sales_table_1
+  description: A logical table capturing key sales data.
+  dimensions:
+  - data_type: TEXT
+    description: The unique ID of the department.
+    expr: dept_id
+    name: department_id
+    unique: true
+  - data_type: TEXT
+    description: Category or type of sales activity.
+    expr: sales_cat
+    name: sales_category
+    sample_values:
+    - Type A
+    - Type B
+    - Type C
+    unique: false
+  filters:
+  - description: Filter for recent sales data (last 30 days).
+    expr: created_at > CURRENT_DATE - INTERVAL '30 DAYS'
+    name: sales_recent_data
+  measures:
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total number of records in sales data.
+    expr: COUNT(*)
+    name: total_records
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total amount related to sales operations.
+    expr: total_amt
+    name: total_amount
+  name: sales_data_1
+  time_dimensions:
+  - data_type: TIMESTAMP
+    description: The timestamp of the record creation.
+    expr: created_at
+    name: created_at
+    unique: false

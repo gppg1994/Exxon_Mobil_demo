@@ -1,0 +1,45 @@
+description: Semantic model for managing and analyzing legal data.
+name: Legal Data Model
+tables:
+- base_table:
+    database: legal_db
+    schema: public
+    table: legal_table_10
+  description: A logical table capturing key legal data.
+  dimensions:
+  - data_type: TEXT
+    description: The unique ID of the department.
+    expr: dept_id
+    name: department_id
+    unique: true
+  - data_type: TEXT
+    description: Category or type of legal activity.
+    expr: legal_cat
+    name: legal_category
+    sample_values:
+    - Type A
+    - Type B
+    - Type C
+    unique: false
+  filters:
+  - description: Filter for recent legal data (last 30 days).
+    expr: created_at > CURRENT_DATE - INTERVAL '30 DAYS'
+    name: legal_recent_data
+  measures:
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total number of records in legal data.
+    expr: COUNT(*)
+    name: total_records
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total amount related to legal operations.
+    expr: total_amt
+    name: total_amount
+  name: legal_data_10
+  time_dimensions:
+  - data_type: TIMESTAMP
+    description: The timestamp of the record creation.
+    expr: created_at
+    name: created_at
+    unique: false

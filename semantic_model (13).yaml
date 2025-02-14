@@ -1,0 +1,244 @@
+name: 'yaml1  '
+tables:
+  - name: AIRCRAFT_CARRIER_INDEX
+    description: The Aircraft Carrier Index table provides a list of airline carriers,
+      including their unique identification codes, names, and key operational details.
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: AIRCRAFT_CARRIER_INDEX
+    dimensions:
+      - name: AIRCRAFT_CARRIER_ID
+        synonyms:
+          - '  '
+        description: Unique ID for the aircraft carrier.
+        expr: AIRCRAFT_CARRIER_ID
+        data_type: TEXT
+        sample_values:
+          - '01228_62'
+          - '06932_11'
+          - '01145_62'
+      - name: CARRIER_NAME
+        synonyms:
+          - '  '
+        description: Name of the airport carrier.
+        expr: CARRIER_NAME
+        data_type: TEXT
+        sample_values:
+          - USA Jet Airlines Inc. (1994 - )
+          - Sportsflight Airways Inc. (1994 - 1996)
+          - Pacific International Airlines Inc. (1996 - 1996)
+      - name: CARRIER_TYPE
+        synonyms:
+          - '  '
+        description: Type of carrier based on its primary operational characteristics.
+        expr: CARRIER_TYPE
+        data_type: TEXT
+        sample_values:
+          - Domestic Carrier
+          - None
+      - name: OAI_CARRIER_TYPE
+        synonyms:
+          - '  '
+        description: Operating Air Carrier (OAC) type that provides a detailed classification
+          of the type of operations conducted by the carrier.
+        expr: OAI_CARRIER_TYPE
+        data_type: TEXT
+        sample_values:
+          - Large Regional Carrier - $20-100M in revenue
+          - National Carrier - $100M-$1B in revenue
+          - Medium Regional Carrier - Under $20M in revenue
+      - name: STATE_GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a state, joinable to the GEOGRAPHY_INDEX
+          table, representing the primary geography for the variable.
+        expr: STATE_GEO_ID
+        data_type: TEXT
+        sample_values:
+          - None
+          - geoId/41
+          - geoId/06
+      - name: COUNTRY_GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a country, joinable to the GEOGRAPHY_INDEX
+          table, representing the primary geography for the variable.
+        expr: COUNTRY_GEO_ID
+        data_type: TEXT
+        sample_values:
+          - country/USA
+          - None
+    measures:
+      - name: CARRIER_WORLD_AREA_CODE
+        synonyms:
+          - '  '
+        description: US DOT identifier for the geographical area where the carrier
+          is based.
+        expr: CARRIER_WORLD_AREA_CODE
+        data_type: NUMBER
+        sample_values:
+          - '10'
+          - '1'
+          - '82'
+  - name: AIRCRAFT_INDEX
+    description: The Aircraft Index table details the various aircraft models used
+      by carriers, including their unique identification codes, names, and associated
+      attributes such as aircraft group and cabin configuration.
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: AIRCRAFT_INDEX
+    dimensions:
+      - name: AIRCRAFT_ID
+        synonyms:
+          - '  '
+        description: ID for the aircraft type, a distinctive model as designated by
+          the manufacturer.
+        expr: AIRCRAFT_ID
+        data_type: TEXT
+        sample_values:
+          - '4661'
+          - '1761'
+          - '7361'
+      - name: AIRCRAFT_NAME
+        synonyms:
+          - '  '
+        description: Specific model or type of the aircraft used for a flight; can
+          include both the manufacturer and model.
+        expr: AIRCRAFT_NAME
+        data_type: TEXT
+        sample_values:
+          - None
+          - Cessna 150/152
+          - Bombardier CRJ550
+      - name: AIRCRAFT_GROUP
+        synonyms:
+          - '  '
+        description: Classification of an aircraft based on size, range, and operational
+          characteristics.
+        expr: AIRCRAFT_GROUP
+        data_type: TEXT
+        sample_values:
+          - Jet, 2-Engine
+          - Turbo-Prop, 1-Engine/2-Engine
+          - Piston, 1-Engine/Combined Single Engine (Piston/Turbine)
+      - name: CABIN_CONFIGURATION
+        synonyms:
+          - '  '
+        description: Description of the layout and seating arrangement within the
+          aircraft cabin.
+        expr: CABIN_CONFIGURATION
+        data_type: TEXT
+        sample_values:
+          - Passenger
+          - Combination Passenger/Cargo
+          - Cargo
+  - name: AIRPORT_INDEX
+    description: The Airport Index table catalogs airports tracked by the US DOT Domestic
+      Segment data, featuring their unique DOT codes, IATA alpha codes, and additional
+      location-specific information.
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: AIRPORT_INDEX
+    dimensions:
+      - name: AIRPORT_ID
+        synonyms:
+          - '  '
+        description: ID for the origin airport that is part of the flight route being
+          measured, combination of the DOT unique code and official 3 letter OAG code
+          issued for that airport.
+        expr: AIRPORT_ID
+        data_type: TEXT
+        sample_values:
+          - 1485SKF
+          - 36515PA5
+          - 36785NH4
+      - name: AIRPORT_NAME
+        synonyms:
+          - '  '
+        description: Name of the airport.
+        expr: AIRPORT_NAME
+        data_type: TEXT
+        sample_values:
+          - Birch Creek Airport
+          - Yellowstone Regional
+          - Tatalina LRRS
+      - name: AIRPORT_ALPHA_CODE
+        synonyms:
+          - '  '
+        description: Code assigned to airports by the International Air Transport
+          Association (IATA), which are widely used in the aviation industry for ticketing,
+          baggage handling, and flight planning.
+        expr: AIRPORT_ALPHA_CODE
+        data_type: TEXT
+        sample_values:
+          - TEX
+          - A52
+          - BIF
+      - name: LOCATION
+        synonyms:
+          - '  '
+        description: Full location name of the airport.
+        expr: LOCATION
+        data_type: TEXT
+        sample_values:
+          - 'Dallas/Fort Worth, TX: Dallas/Fort Worth International'
+          - 'Morrisville, VT: Morrisville Stowe State'
+          - 'Birch Creek, AK: Birch Creek Airport'
+      - name: AIRPORT_CITY_NAME
+        synonyms:
+          - '  '
+        description: Name of the city where the airport is located.
+        expr: AIRPORT_CITY_NAME
+        data_type: TEXT
+        sample_values:
+          - Hilo
+          - Nelson Lagoon
+          - Anchorage
+      - name: STATE_GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a state, joinable to the GEOGRAPHY_INDEX
+          table, representing the primary geography for the variable.
+        expr: STATE_GEO_ID
+        data_type: TEXT
+        sample_values:
+          - geoId/12
+          - geoId/54
+          - geoId/05
+      - name: COUNTRY_GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a country, joinable to the GEOGRAPHY_INDEX
+          table, representing the primary geography for the variable.
+        expr: COUNTRY_GEO_ID
+        data_type: TEXT
+        sample_values:
+          - country/FRA
+          - country/CHN
+          - country/USA
+    measures:
+      - name: AIRPORT_DOT_CODE
+        synonyms:
+          - '  '
+        description: Unique identifier assigned by the US DOT to each airport, used
+          for administrative and reporting purposes.
+        expr: AIRPORT_DOT_CODE
+        data_type: NUMBER
+        sample_values:
+          - '31624'
+          - '34905'
+          - '31342'
+      - name: AIRPORT_WORLD_AREA_CODE
+        synonyms:
+          - '  '
+        description: US DOT identifier for the geographical area where the airport
+          is based.
+        expr: AIRPORT_WORLD_AREA_CODE
+        data_type: NUMBER
+        sample_values:
+          - '21'
+          - '85'
+          - '73'

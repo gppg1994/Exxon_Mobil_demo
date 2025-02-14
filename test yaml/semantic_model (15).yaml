@@ -1,0 +1,85 @@
+name: yaml3
+tables:
+  - name: CALENDAR_INDEX
+    description: "Cybersyn compiles common calendars into a single table. Each calendar\
+      \ has an ID (calendar_id) for users to select which calendar type they want\
+      \ to use. Individual periods within the calendar include period start and end\
+      \ dates.\n\nIn addition to period start and end dates, the relevant annual period\
+      \ is included in addition to the ordinal position of the period within the annual\
+      \ period. For example, and ordinal position of 100 in the daily calendar indicates\
+      \ the day is the 100th period in the year.\n\nCalendars include the following\
+      \ period types: Day, Week, Month, Quarter, and Year. For Month, Quarter, and\
+      \ Year periods, calendars are further broken down to include the traditional\
+      \ measures of the periods as well as Retail 4-5-4 calendars for each period\
+      \ type. Additionally, the Retail 4-5-4 calendars include the restated periods\
+      \ to account for years in which there are 53 weeks."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: CALENDAR_INDEX
+    dimensions:
+      - name: CALENDAR_ID
+        synonyms:
+          - '  '
+        description: Unique ID denoting a type of calendar (e.g., Month, Quarter,
+          Retail 4-5-4 Month).
+        expr: CALENDAR_ID
+        data_type: TEXT
+        sample_values:
+          - day
+          - retail_454_month
+          - week_monday_start
+      - name: CALENDAR_NAME
+        synonyms:
+          - '  '
+        description: Human-readable name for the type of calendar.
+        expr: CALENDAR_NAME
+        data_type: TEXT
+        sample_values:
+          - Week - Monday Start
+          - Retail 4-5-4 Month
+          - Retail 4-5-4 Quarter
+    time_dimensions:
+      - name: PERIOD_START_DATE
+        synonyms:
+          - '  '
+        description: The first day of the period.
+        expr: PERIOD_START_DATE
+        data_type: DATE
+        sample_values:
+          - '2030-10-01'
+          - '2023-12-31'
+          - '2024-10-10'
+      - name: PERIOD_END_DATE
+        synonyms:
+          - '  '
+        description: The last day of the period.
+        expr: PERIOD_END_DATE
+        data_type: DATE
+        sample_values:
+          - '2030-10-01'
+          - '2024-10-10'
+          - '2016-04-24'
+    measures:
+      - name: ANNUAL_PERIOD
+        synonyms:
+          - '  '
+        description: The year number related to the annual calendar for the period.
+          It reflects the calendar year for calendar periods and the 4-5-4 retail
+          year for retail periods.
+        expr: ANNUAL_PERIOD
+        data_type: NUMBER
+        sample_values:
+          - '2022'
+          - '2027'
+          - '2017'
+      - name: ORDINAL_POSITION_IN_ANNUAL_PERIOD
+        synonyms:
+          - '  '
+        description: The ordinal position of the period within the annual period.
+        expr: ORDINAL_POSITION_IN_ANNUAL_PERIOD
+        data_type: NUMBER
+        sample_values:
+          - '339'
+          - '111'
+          - '229'

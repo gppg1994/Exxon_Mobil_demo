@@ -1,0 +1,128 @@
+name: pop
+tables:
+  - name: NAICS_CODE_INDEX
+    description: Index table of NAICS codes with industry definitions and classification
+      year.
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: NAICS_CODE_INDEX
+    dimensions:
+      - name: NAICS_CODE
+        synonyms:
+          - '  '
+        description: Industry classification according to North American Industry
+          Classification System.
+        expr: NAICS_CODE
+        data_type: TEXT
+        sample_values:
+          - '11'
+          - '111'
+          - '1111'
+      - name: SECTOR
+        synonyms:
+          - '  '
+        description: Description of Industry classification according to North American
+          Industry Classification System.
+        expr: SECTOR
+        data_type: TEXT
+        sample_values:
+          - Agriculture, Forestry, Fishing and Hunting
+          - Crop Production
+          - Oilseed and Grain Farming
+      - name: NAICS_HIERARCHY
+        synonyms:
+          - '  '
+        description: NAICS uses a hierarchical structure which is the following -
+          Sector, Subsector, Industry Group, NAICS Industry, National Industry.
+        expr: NAICS_HIERARCHY
+        data_type: TEXT
+        sample_values:
+          - Sector
+          - Subsector
+          - Industry Group
+    measures:
+      - name: NAICS_CLASSIFICATION_YEAR
+        synonyms:
+          - '  '
+        description: Year in which the classification was defined (usually done on
+          a 5-year cadence).
+        expr: NAICS_CLASSIFICATION_YEAR
+        data_type: NUMBER
+        sample_values:
+          - '2022'
+          - '2017'
+          - '2012'
+  - name: PUBLIC_HOLIDAY_CALENDAR
+    description: "The Public Holiday Calendar provides reference data containing government-designated\
+      \ holidays for 119 countries since 1970, as well as the financial market holidays\
+      \ for the European Central Bank (ECB) and New York Stock Exchange (NYSE).\n\
+      Provides historical values for each public holiday by GEO_ID.\nEach row represents\
+      \ a distinct timeseries, date, and holiday name by geographic entity. It identifies\
+      \ whether the holiday is financial."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: PUBLIC_HOLIDAY_CALENDAR
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: GEO_ID from GEOGRAPHY_INDEX table
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - country/MKD
+          - country/KOR
+          - country/LSO
+      - name: ISO_ALPHA2
+        synonyms:
+          - '  '
+        description: 2 letter country code from International Organization for Standardization
+        expr: ISO_ALPHA2
+        data_type: TEXT
+        sample_values:
+          - SG
+          - TR
+          - LS
+      - name: HOLIDAY_NAME
+        synonyms:
+          - '  '
+        description: Name of the Holiday
+        expr: HOLIDAY_NAME
+        data_type: TEXT
+        sample_values:
+          - Independence Day
+          - Statehood Day
+          - Christmas Second Day
+      - name: SUBDIVISION
+        synonyms:
+          - '  '
+        description: State, province, or other underlying geography that is specific
+          to the holiday
+        expr: SUBDIVISION
+        data_type: TEXT
+        sample_values:
+          - VS
+          - UR
+          - SWK
+      - name: IS_FINANCIAL
+        synonyms:
+          - '  '
+        description: Boolean denoting a stock market closure for the given region
+        expr: IS_FINANCIAL
+        data_type: BOOLEAN
+        sample_values:
+          - 'True'
+          - 'False'
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the event
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '1977-09-28'
+          - '1979-03-10'
+          - '1988-02-18'

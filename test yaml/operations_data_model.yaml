@@ -1,0 +1,45 @@
+description: Semantic model for managing and analyzing operations data.
+name: Operations Data Model
+tables:
+- base_table:
+    database: operations_db
+    schema: public
+    table: operations_table_6
+  description: A logical table capturing key operations data.
+  dimensions:
+  - data_type: TEXT
+    description: The unique ID of the department.
+    expr: dept_id
+    name: department_id
+    unique: true
+  - data_type: TEXT
+    description: Category or type of operations activity.
+    expr: operations_cat
+    name: operations_category
+    sample_values:
+    - Type A
+    - Type B
+    - Type C
+    unique: false
+  filters:
+  - description: Filter for recent operations data (last 30 days).
+    expr: created_at > CURRENT_DATE - INTERVAL '30 DAYS'
+    name: operations_recent_data
+  measures:
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total number of records in operations data.
+    expr: COUNT(*)
+    name: total_records
+  - data_type: NUMBER
+    default_aggregation: sum
+    description: Total amount related to operations operations.
+    expr: total_amt
+    name: total_amount
+  name: operations_data_6
+  time_dimensions:
+  - data_type: TIMESTAMP
+    description: The timestamp of the record creation.
+    expr: created_at
+    name: created_at
+    unique: false

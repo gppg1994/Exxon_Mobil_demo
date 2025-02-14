@@ -1,0 +1,294 @@
+name: yaml4
+tables:
+  - name: CYBERSYN_DATA_CATALOG
+    description: A catalog of all Cybersyn tables. Metadata about the tables includes
+      descriptions, data sources, related tables, and more.
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: CYBERSYN_DATA_CATALOG
+    dimensions:
+      - name: TABLE_NAME
+        synonyms:
+          - '  '
+        description: Machine-readable table name.
+        expr: TABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - aircraft_carrier_index
+          - aircraft_index
+          - airport_index
+      - name: TABLE_NAME_PROPER
+        synonyms:
+          - '  '
+        description: Human-readable table name.
+        expr: TABLE_NAME_PROPER
+        data_type: TEXT
+        sample_values:
+          - Aircraft Carrier Index
+          - Aircraft Index
+          - Airport Index
+      - name: TABLE_TYPE
+        synonyms:
+          - '  '
+        description: Cybersyn table type as part of the unified schema.
+        expr: TABLE_TYPE
+        data_type: TEXT
+        sample_values:
+          - index
+          - point-in-time history
+          - timeseries
+      - name: DESCRIPTION
+        synonyms:
+          - '  '
+        description: Details on the source of the data, the table, and what is included
+          in the table.
+        expr: DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - The Aircraft Carrier Index table provides a list of airline carriers,
+            including their unique identification codes, names, and key operational
+            details.
+          - The Aircraft Index table details the various aircraft models used by carriers,
+            including their unique identification codes, names, and associated attributes
+            such as aircraft group and cabin configuration.
+          - The Airport Index table catalogs airports tracked by the US DOT Domestic
+            Segment data, featuring their unique DOT codes, IATA alpha codes, and
+            additional location-specific information.
+      - name: DOCUMENTATION_URL
+        synonyms:
+          - '  '
+        description: URL of the documentation associated with the table.
+        expr: DOCUMENTATION_URL
+        data_type: TEXT
+        sample_values:
+          - https://docs.cybersyn.com/foundations/sources/usdot/
+          - https://docs.cybersyn.com/foundations/sources/census-bureau/
+          - https://docs.cybersyn.com/intro/concepts/point-in-time-history
+      - name: SHORT_DESCRIPTION
+        synonyms:
+          - '  '
+        description: Summarized details on the source of the data, the table, and
+          what is included in the table.
+        expr: SHORT_DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - List of airline carriers, including their unique identification codes,
+            names, and key operational details.
+          - Various aircraft models used by carriers.
+          - Airports tracked by the US DOT Domestic Segment data.
+    time_dimensions:
+      - name: CREATED_DATE
+        synonyms:
+          - '  '
+        description: Date for the table's addition to the Snowflake Marketplace.
+        expr: CREATED_DATE
+        data_type: DATE
+        sample_values:
+          - '2024-07-29'
+          - '2023-10-02'
+          - '2023-11-06'
+      - name: LAST_UPDATED_TIMESTAMP
+        synonyms:
+          - '  '
+        description: Timestamp for the table's last update or modification.
+        expr: LAST_UPDATED_TIMESTAMP
+        data_type: TIMESTAMP_TZ
+        sample_values:
+          - '2025-01-16 01:06:49.351000+00:00'
+          - '2025-01-16 01:06:47.353000+00:00'
+          - '2025-01-16 01:06:47.608000+00:00'
+  - name: CYBERSYN_DATA_DICTIONARY
+    description: A data dictionary for all Cybersyn Foundations data tables.
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: CYBERSYN_DATA_DICTIONARY
+    dimensions:
+      - name: TABLE_NAME
+        synonyms:
+          - '  '
+        description: Machine-readable table name.
+        expr: TABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - aircraft_index
+          - aircraft_carrier_index
+          - airport_index
+      - name: TABLE_NAME_PROPER
+        synonyms:
+          - '  '
+        description: Human-readable table name.
+        expr: TABLE_NAME_PROPER
+        data_type: TEXT
+        sample_values:
+          - OpenFIGI Security Index Point-in-Time History
+          - Climate Watch Emissions & Emissions Scenarios Attributes
+          - Climate Watch Emissions & Emissions Scenarios Timeseries Point-in-Time
+            History
+      - name: TABLE_TYPE
+        synonyms:
+          - '  '
+        description: Cybersyn table type as part of the unified schema.
+        expr: TABLE_TYPE
+        data_type: TEXT
+        sample_values:
+          - timeseries
+          - events
+          - characteristics
+      - name: COLUMN_NAME
+        synonyms:
+          - '  '
+        description: Label for a particular field in the table, representing the column's
+          values.
+        expr: COLUMN_NAME
+        data_type: TEXT
+        sample_values:
+          - MAJORITY_OWNED_BY_MINORITY_OR_WOMEN
+          - PUBMED_CENTRAL_WORK_ID
+          - AIRCRAFT_CARRIER_ID
+      - name: DATA_TYPE
+        synonyms:
+          - '  '
+        description: The type of data stored in the column.
+        expr: DATA_TYPE
+        data_type: TEXT
+        sample_values:
+          - NUMBER
+          - TIMESTAMP_TZ
+          - VARIANT
+      - name: COLUMN_DESCRIPTION
+        synonyms:
+          - '  '
+        description: Detailed explanation of what the column represents and the type
+          of information it stores.
+        expr: COLUMN_DESCRIPTION
+        data_type: TEXT
+        sample_values:
+          - Name of the airport carrier.
+          - Quantifiable attribute; description of what is being recorded.
+          - Value reported for the variable.
+  - name: CYBERSYN_VARIABLE_CATALOG
+    description: A catalog of all Cybersyn variables. Metadata about the variables
+      includes unit, frequency, measure, applicable geographies and entities, and
+      more.
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: CYBERSYN_VARIABLE_CATALOG
+    dimensions:
+      - name: TABLE_NAME
+        synonyms:
+          - '  '
+        description: Machine-readable table name.
+        expr: TABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - us_economic_census_attributes
+          - sec_corporate_report_attributes
+          - usps_address_change_attributes
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - B24122_197M_1YR_2012
+          - B19326_002M_5YR_2009
+          - B19326_002M_5YR_2020
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - All reporting countries - Cross-border Total liabilities of banks with
+            headquarters in All countries (total) vis-a-vis residents of European
+            developed countries, Households and NPISHs (Annual growth (BIS calculated),
+            Credit (loans & debt securities) in All currencies (=D+F+U), All currencies,
+            All reporting banks/institutions (domestic, foreign, consortium and unclassified)
+          - All reporting countries - Cross-border Total liabilities of banks with
+            headquarters in All countries (total) vis-a-vis residents of Saint Kitts
+            and Nevis, Households and NPISHs (Annual growth (BIS calculated), Credit
+            (loans & debt securities) in All currencies (=D+F+U), All currencies,
+            All reporting banks/institutions (domestic, foreign, consortium and unclassified)
+          - All reporting countries - Cross-border Total liabilities of banks with
+            headquarters in All countries (total) vis-a-vis residents of Lesotho,
+            Households and NPISHs (Annual growth (BIS calculated), Credit (loans &
+            debt securities) in All currencies (=D+F+U), All currencies, All reporting
+            banks/institutions (domestic, foreign, consortium and unclassified)
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - IDR
+          - EUR
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Ytd
+          - Annually
+          - Weekly
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - None
+          - Assets
+          - Sales And Revenue
+      - name: SEASONALLY_ADJUSTED
+        synonyms:
+          - '  '
+        description: Indicates whether the value is seasonally or calendar adjusted.
+        expr: SEASONALLY_ADJUSTED
+        data_type: TEXT
+        sample_values:
+          - Not Seasonally Adjusted
+          - Neither Seasonally Adjusted Nor Calendar Adjusted
+          - Seasonally Adjusted
+      - name: DOCUMENTATION_URL
+        synonyms:
+          - '  '
+        description: URL of the documentation associated with the table.
+        expr: DOCUMENTATION_URL
+        data_type: TEXT
+        sample_values:
+          - https://docs.cybersyn.com/foundations/sources/census-bureau/
+          - https://docs.cybersyn.com/foundations/sources/imf/
+          - https://docs.cybersyn.com/foundations/sources/irs/
+    time_dimensions:
+      - name: MIN_DATE
+        synonyms:
+          - '  '
+        description: The earliest date that this variable appears in the data.
+        expr: MIN_DATE
+        data_type: DATE
+        sample_values:
+          - '2014-12-31'
+          - '2016-12-31'
+          - '2018-12-31'
+      - name: MAX_DATE
+        synonyms:
+          - '  '
+        description: The latest date that this variable appears in the data.
+        expr: MAX_DATE
+        data_type: DATE
+        sample_values:
+          - '2014-12-31'
+          - '2018-12-31'
+          - '2016-12-31'

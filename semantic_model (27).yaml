@@ -1,0 +1,217 @@
+name: yaml1
+tables:
+  - name: UNITED_KINGDOM_ATTRIBUTES
+    description: "UK datasets on population, demographics, regional economies, deaths/suicides,\
+      \ retail sales, and credit/debit card spending.\n\nProvides a wide format breakdown\
+      \ of variables included in the united_kingdom_timeseries table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: UNITED_KINGDOM_ATTRIBUTES
+    dimensions:
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - retail-sales-index-large-and-small-businesses_all-retailing-excluding-automotive-fuel-all-businesses_annual_value-of-retail-sales-at-current-prices_non-seasonal-adjustment
+          - retail-sales-index-large-and-small-businesses_all-retailing-excluding-automotive-fuel-all-businesses_monthly_chained-volume-of-retail-sales_non-seasonal-adjustment
+          - retail-sales-index-large-and-small-businesses_all-retailing-excluding-automotive-fuel-all-businesses_monthly_value-of-retail-sales-at-current-prices_non-seasonal-adjustment
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - 'Retail Sales Index of Large and Small Businesses: All retailing, excluding
+            automotive fuel, all businesses - Annual Value of retail sales at current
+            prices (Non Seasonally Adjusted)'
+          - 'Retail Sales Index of Large and Small Businesses: All retailing, excluding
+            automotive fuel, all businesses - Monthly Chained volume of retail sales
+            (Non Seasonally Adjusted)'
+          - 'Retail Sales Index of Large and Small Businesses: All retailing, excluding
+            automotive fuel, all businesses - Monthly Value of retail sales at current
+            prices (Non Seasonally Adjusted)'
+      - name: MEASURE
+        synonyms:
+          - '  '
+        description: Quantifiable attribute or subject; description of what is being
+          recorded.
+        expr: MEASURE
+        data_type: TEXT
+        sample_values:
+          - Retail Sales
+          - Victims Domestic Homicides
+          - Police Recorded Crime
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Index
+          - Count
+          - Count of recorded offenses
+      - name: INDUSTRY
+        synonyms:
+          - '  '
+        description: Related industry.
+        expr: INDUSTRY
+        data_type: TEXT
+        sample_values:
+          - All retailing excluding automotive fuel
+          - All retailing including automotive fuel
+          - None
+      - name: MEASUREMENT_TYPE
+        synonyms:
+          - '  '
+        description: Measurement classification of the variable.
+        expr: MEASUREMENT_TYPE
+        data_type: TEXT
+        sample_values:
+          - Value of retail sales at current prices
+          - Chained volume of retail sales
+          - None
+      - name: SEASONALLY_ADJUSTED
+        synonyms:
+          - '  '
+        description: Indicates whether the value is seasonally adjusted.
+        expr: SEASONALLY_ADJUSTED
+        data_type: TEXT
+        sample_values:
+          - None
+          - Seasonally Adjusted
+      - name: SEX
+        synonyms:
+          - '  '
+        description: Sex, if applicable.
+        expr: SEX
+        data_type: TEXT
+        sample_values:
+          - None
+          - Total
+          - Female
+      - name: AGE
+        synonyms:
+          - '  '
+        description: Age category, if applicable.
+        expr: AGE
+        data_type: TEXT
+        sample_values:
+          - None
+          - Adults 16 years old and over
+          - 75-79 years old
+      - name: RELIGION
+        synonyms:
+          - '  '
+        description: Religion, if applicable.
+        expr: RELIGION
+        data_type: TEXT
+        sample_values:
+          - None
+          - Christian
+          - No religion
+      - name: FREQUENCY
+        synonyms:
+          - '  '
+        description: Frequency of aggregations.
+        expr: FREQUENCY
+        data_type: TEXT
+        sample_values:
+          - Annual
+          - Monthly
+          - Quarterly
+      - name: SOURCE
+        synonyms:
+          - '  '
+        description: Source of the data.
+        expr: SOURCE
+        data_type: TEXT
+        sample_values:
+          - None
+          - Domestic abuse in England and Wales - Appendix tables
+          - Sexual offenses prevalence and victim characteristics, England and Wales,
+            Police recorded crime from the Home Office
+  - name: UNITED_KINGDOM_TIMESERIES
+    description: "Statistics on UK population, demographics, economy, deaths, retail\
+      \ sales, and card spending by geographic entity over time.\n\nEach row represents\
+      \ a distinct timeseries, date, and value by geographic entity. Each variable\
+      \ is detailed in the united_kingdom_attributes table."
+    base_table:
+      database: GLOBAL_GOVERNMENT
+      schema: CYBERSYN
+      table: UNITED_KINGDOM_TIMESERIES
+    dimensions:
+      - name: GEO_ID
+        synonyms:
+          - '  '
+        description: A unique identifier for a place. Joinable to other geography
+          tables including GEOGRAPHY_INDEX, GEOGRAPHY_RELATIONSHIPS, and GEOGRAPHY_CHARACTERISTICS.
+        expr: GEO_ID
+        data_type: TEXT
+        sample_values:
+          - uk/E23000038
+          - uk/E92000001
+          - uk/E12000002
+      - name: VARIABLE
+        synonyms:
+          - '  '
+        description: Unique identifier for a variable, joinable to the timeseries
+          table.
+        expr: VARIABLE
+        data_type: TEXT
+        sample_values:
+          - domestic_abuse_full_time_equivalent_fte_practitioners_england_and_wales_by_region_and_support_type__outreach_workers_annual_count
+          - reported_incidents_of_rape_and_police_recorded_rape_crime_data_rates_per_100000_population_police_forces_in_england_and_wales_transferred_rape_offenses__suffolk_police_force_annual_count
+          - number_of_domestic_abuse-related_stalking_and_harassment_offences_recorded_by_the_police_by_police_force_area_percentage_of_all_stalking_and_harassment_offences_annual_percent
+      - name: VARIABLE_NAME
+        synonyms:
+          - '  '
+        description: Human-readable unique name for the variable.
+        expr: VARIABLE_NAME
+        data_type: TEXT
+        sample_values:
+          - Sources of referrals to multi-agency risk assessment conferences (MARACs),
+            by police force area and region | Other, Annual (Count)
+          - Prevalence of sexual assault in the last year among adults aged 16 to
+            59, by type of assault and sex | Assault by penetration including attempts
+            | Adults aged 16-59 years old | Female, Annual (Percent who were victims
+            once or more)
+          - Prisoners by ethnic group and religion, Prisoners | Muslim, Annual (Count)
+      - name: UNIT
+        synonyms:
+          - '  '
+        description: Unit of measurement for the reported value.
+        expr: UNIT
+        data_type: TEXT
+        sample_values:
+          - Count
+          - Rate per 1,000 population
+          - Percent
+    time_dimensions:
+      - name: DATE
+        synonyms:
+          - '  '
+        description: Date associated with the value.
+        expr: DATE
+        data_type: DATE
+        sample_values:
+          - '2002-01-31'
+          - '1991-12-31'
+          - '1994-07-31'
+    measures:
+      - name: VALUE
+        synonyms:
+          - '  '
+        description: Value reported for the variable.
+        expr: VALUE
+        data_type: FLOAT
+        sample_values:
+          - '21395.0'
+          - '1045.0'
+          - '36248.0'
