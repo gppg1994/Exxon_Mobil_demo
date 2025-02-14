@@ -4,3 +4,4 @@ python-dotenv
 langchain-openai
 streamlit
 snowflake-connector-python
+pandas

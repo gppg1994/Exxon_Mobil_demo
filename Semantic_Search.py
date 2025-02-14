@@ -7,7 +7,6 @@ import time
 import dotenv 
 import pandas as pd
 import io
-import xlsxwriter
 
 dotenv.load_dotenv()
 
