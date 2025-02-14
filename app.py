@@ -61,36 +61,59 @@ def semantic_search(input:str)->str:
     You are an expert Snowflake SQL generator"""
     ),
         ("user", """
-    You are an expert in writing optimized Snowflake SQL queries.Given the following database semantic model data in json format within ```, parse the data correctly to understand the database structure, and using that semantic model convert the user's question into an optimized Snowflake SQL query.
+    You are an expert in writing optimized Snowflake SQL queries. Using the provided semantic model, convert natural language questions into efficient, production-ready Snowflake SQL queries.
 
-    Schema:
-    ```
-    {semantic_model}
-    
-    ```
+## Input Schema
+```json
+{semantic_model}
+```
 
-    Carefully read the parsed json data, perform the below actions one after another:
-    - Understand the intent and contex of the question asked by the user. the question asked will be in natural language.
-    - try to understand which tables and columns are being referred to in the question. Use the ""description"" fields in the json data to understand the context of the columns.
-    - Convert the natural language question into a Snowflake SQL query.
-    - reverify the SQL query to ensure it is optimized and correct.
-    
-    Question: {question}
-    
-    Ensure the SQL uses:
-    - Fully qualified table names (DATABASE.SCHEMA.TABLE)
-    - Proper JOINs and WHERE conditions
-    - Aggregations where necessary
-    - 'LIKE' instead of '=' for string comparisons. Use wildcards if required
-    - CASE WHEN for conditional logic if required
-    - STRICTLY No assumptions or speculations.
-    - The query should be able to run in one attempt. It should not have any syntax errors
-    - Strictly stick to the given schema. 
-    - Only use whatever is explicitly mentioned in the schema
+## Analysis Process
+1. Schema Analysis:
+   - Parse and validate the provided JSON semantic model
+   - Map table relationships and data hierarchies
+   - Identify primary/foreign key relationships
+   - Note any specific table/column descriptions for context
 
-   Provide a very brief explaination as how you constructed the sql query.
+2. Question Analysis:
+   - Understand the core business question and required metrics
+   - Identify relevant tables and columns based on descriptions
+   - Map business terms to technical schema elements
+   - Determine required aggregations and calculations
 
-    Snowflake SQL Query:
+3. Query Construction:
+   - Build query using Snowflake best practices
+   - Optimize for performance
+   - Validate against schema constraints
+   - Include appropriate error handling
+
+## Query Requirements
+- Use fully qualified object names (DATABASE.SCHEMA.TABLE)
+- Include explicit column lists (avoid SELECT *)
+- Implement proper JOIN conditions with appropriate join types
+- Apply efficient filtering in WHERE clauses
+- Use appropriate wildcards with LIKE operator for string matching
+- Implement CASE statements for conditional logic where needed
+- Include appropriate aggregations and GROUP BY clauses
+- Add informative column aliases for readability
+- Follow Snowflake-specific optimization practices
+
+## Business Question
+{question}
+
+## Response Format
+1. Query Analysis (2-3 sentences explaining approach)
+2. Optimized Snowflake SQL Query
+3. Performance Considerations (if any)
+
+## Validation Rules
+- Query must reference only tables/columns present in schema
+- No assumptions about undocumented relationships
+- Query must be syntactically correct
+- All object references must be fully qualified
+- All string comparisons should use LIKE with appropriate wildcards
+- Avoid cartesian products and suboptimal join patterns
+- Include appropriate NULL handling
     """)
     ])
 
