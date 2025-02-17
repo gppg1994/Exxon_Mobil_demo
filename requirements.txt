@@ -6,3 +6,4 @@ streamlit
 snowflake-connector-python
 pandas
 XlsxWriter
+mitosheet
