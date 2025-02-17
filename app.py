@@ -58,9 +58,6 @@ def semantic_search(input:str)->str:
     #print(semantic_model)
     prompt_template = ChatPromptTemplate.from_messages([
         ("system", """
-    You are an expert Snowflake SQL generator"""
-    ),
-        ("user", """
     You are an expert in writing optimized Snowflake SQL queries. Using the provided semantic model, convert natural language questions into efficient, production-ready Snowflake SQL queries.
 
 ## Input Schema
@@ -98,9 +95,6 @@ def semantic_search(input:str)->str:
 - Add informative column aliases for readability
 - Follow Snowflake-specific optimization practices
 
-## Business Question
-{question}
-
 ## Response Format
 1. Query Analysis (2-3 sentences explaining approach)
 2. Optimized Snowflake SQL Query
@@ -114,6 +108,15 @@ def semantic_search(input:str)->str:
 - All string comparisons should use LIKE with appropriate wildcards
 - Avoid cartesian products and suboptimal join patterns
 - Include appropriate NULL handling
+"""
+    ),
+        ("user", """
+    Create an optimized SQL query for the below question:
+
+## Business Question
+{question}
+
+
     """)
     ])
 
